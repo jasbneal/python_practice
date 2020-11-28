@@ -5,3 +5,18 @@
 for number in range(2000, 3201):
     if (number % 7) == 0 and (number % 5) != 0:
         print(number, ',', end='')
+
+#Exercise 14 (Chpt. 4 Starting Out With Python)
+#Loop that prints the following design:
+##
+# #
+#  #
+#   #
+#    #
+#     #
+
+for row in range(6):
+    print('#', end='')
+    for column in range(row):
+        print(' ', end='')
+    print('#')

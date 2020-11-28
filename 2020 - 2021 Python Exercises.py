@@ -85,3 +85,57 @@ for row in range(1, 6):
     for column in range(6 - row, 0, -1):
         print(column, ' ', end='')
     print()
+
+#28 November 2020
+#Print the following pattern (w/o # sign):
+
+# *
+# * *
+# * * *
+# * * * *
+# * * * * *
+# * * * *
+# * * *
+# * * 
+# * 
+
+for row in range(1, 6):
+    for column in range(row):
+        print('*', ' ', end='')
+    print()
+
+for row in range(1, 5):
+    for column in range(5 - row):
+        print('*', ' ', end='')
+    print()
+
+#28 November 2020
+#Print the following pattern (w/o # sign):
+
+# *
+
+# * *
+
+# * * *
+
+# * * * *
+
+# * * * * *
+
+# * * * *
+
+# * * *
+
+# * *
+
+# * 
+
+for row in range(0, 5):
+    for column in range(0, row + 1):
+        print('*', ' ', end='')
+    print('\n')
+
+for row in range(5, 0, -1):
+    for column in range(0, row - 1):
+        print('*', ' ', end='')
+    print('\n')

@@ -1,2 +1,2 @@
-# python_practice
-2020 - 2021 Log of Python Programming Exercises 
+# Python Practice: 2020 - 2021
+

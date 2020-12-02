@@ -139,3 +139,37 @@ for row in range(5, 0, -1):
     for column in range(0, row - 1):
         print('*', ' ', end='')
     print('\n')
+
+# 1 December 2020
+# Create a loop that sums the numbers from 100 to 200.
+
+total = 0.0
+
+for i in range(100, 201):
+    total += i
+
+print('The sum of all numbers from 100 to 200 is', format(total, ',.0f'))
+
+# 1 December 2020
+# Create a loop that counts all even numbers to 10.
+
+for i in range(0, 11, 2):
+    print(i)
+
+# 1 December 2020
+# Practice Python Character Input Exercise
+# Create a program that asks the user to enter their name and their age.
+# Print out a message addressed to them that tells them which year they will
+# turn 100 years old.
+
+def main():
+    age_100()
+
+def age_100():
+    first_name = input('Enter your first name: ')
+    age = int(input('Enter your age: '))
+    current_year = int(input('What year is it? '))
+    age_100 = (100 - age) + current_year
+    print(first_name, 'you will turn 100 in the year', age_100)
+
+main()

@@ -173,3 +173,96 @@ def age_100():
     print(first_name, 'you will turn 100 in the year', age_100)
 
 main()
+
+# 5 January 2021
+# Starting Out With Python Functions Exercise 1
+# Write a program that asks the user to enter a distance in kilometers,
+# and then converts that distance to miles. The conversion formula is as follows:
+# Miles = Kilometers x 0.6214
+
+def main():
+    kilometers = float(input('Enter a distance in kilometers: '))
+    print(miles_conversion(kilometers))
+
+# miles_conversion function calculates miles based on the kilometers argument
+
+def miles_conversion(kilometers):
+    miles = kilometers * .6214
+    return format(miles, ',.2f')
+
+main()
+
+# 5 January 2021
+# Starting Out With Python Functions Exercise 2
+# Write a program that will ask the user to enter the amount of a purchase. The program
+# should then compute the state and county sales tax. Assume the state sales tax is 5 percent
+# and the county sales tax is 2.5 percent. The program should display the amount of the
+# purchase, the state sales tax, the county sales tax, the total sales tax, and the total
+# of the sale (purchase amount + total sales tax)
+
+STATE_SALES_TAX = .05
+
+COUNTY_SALES_TAX = .025
+
+# Takes the sales tax, county tax, total tax and sale total functions to display the total
+# purchase data to the user
+
+def main():
+    purchase = int(input('Enter the amount of the purchase: '))
+    print('Here are the details of your purchase: ')
+    print('Purchase Amount: $', format(purchase, ',.2f'), sep='')
+    print('State Sales Tax Amount $', format(sales_tax_calculation(purchase), ',.2f'), sep='')
+    print('State County Tax Amount $', format(county_tax_calculation(purchase), ',.2f'), sep='')
+    print('Total Tax Amount $', format(total_tax_calculation(purchase), ',.2f'), sep='') 
+    print('Total of Sale $', format(sale_total(purchase), ',.2f'), sep='')
+
+# sales_tax_calculation function alculates the sales tax using the
+# STATE_SALES_TAX global variable
+
+def sales_tax_calculation(purchase):
+    return purchase * STATE_SALES_TAX
+
+# county_tax_calculation function calculates the sales tax using the
+# COUNTY_SALES_TAX global variable
+
+def county_tax_calculation(purchase):
+    return purchase * COUNTY_SALES_TAX
+
+# total_tax_calculation function calculates the total sales tax using the
+# COUNTY_SALES_TAX and STATE_SALES_TAX global variables
+
+def total_tax_calculation(purchase):
+    total = (purchase * STATE_SALES_TAX) + (purchase * COUNTY_SALES_TAX)
+    return total
+
+# sale_total function calculates the total of the sale using the
+# total_tax_calculation function and purchase price
+
+def sale_total(purchase):
+    total = purchase + total_tax_calculation(purchase)
+    return total
+    
+main()
+
+# 5 January 2021
+# Starting Out With Python Functions Exercise 3
+# Many financial experts advise that property owners should insure their homes or buildings
+# for at least 80% of the amount it would cost to replace the structure. Write a program
+# that asks the user to enter the replacement cost of a building and then displays the
+# minimum amount of insurance he or she should buy for the property
+
+INSURANCE_MINIMUM = .80
+
+def main():
+    cost = float(input('Enter the replacement cost of the building: ')) 
+    print('The minimum amount of insurance you should buy for the property is $', end='')
+    print(format(insurance_amount(cost), ',.2f'))
+
+# insurance_amount function calculates the minimum insurance using the INSURANCE_MINIMUM
+# global variable 
+
+def insurance_amount(cost):
+    minimum = cost * INSURANCE_MINIMUM
+    return minimum
+
+main()

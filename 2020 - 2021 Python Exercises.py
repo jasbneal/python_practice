@@ -266,3 +266,97 @@ def insurance_amount(cost):
     return minimum
 
 main()
+
+# 6 January 2021
+# Starting Out With Python Functions Exercise 4
+# Write a program that asks the user to enter the monthly costs for the following expenses incurred
+# from operating his or her automobile: loan payment, insurance, gas, oil, tires, and
+# maintenance. The program should then display the total monthly cost of these expenses, and the total
+#annual cost of these expenses.
+
+def main():
+    # Get the monthly costs of all car expenses and adds them for a monthly and yearly total
+    loan_payment = get_loan_payment()
+    insurance = get_insurance()
+    gas = get_gas()
+    oil = get_oil()
+    tires = get_tires()
+    maintenance = get_maintenance()
+    monthly_total = loan_payment + insurance + gas + oil + tires + maintenance
+    annual_total = 12 * monthly_total
+    print('The monthly cost of your car expenses is $', format(monthly_total, ',.2f'), sep='')
+    print('The annual cost of your car expenses is $', format(annual_total, ',.2f'), sep='')
+
+def get_loan_payment():
+    loan = float(input('Enter the monthly cost of your car loan payment: '))
+    return loan
+
+def get_insurance():
+    insurance = float(input('Enter the monthly cost of your car insurance: '))
+    return insurance
+
+def get_gas():
+    gas = float(input('Enter the monthly cost of gas: '))
+    return gas
+
+def get_oil():
+    oil = float(input('Enter the monthly cost of oil: '))
+    return oil
+
+def get_tires():
+    tires = float(input('Enter the monthly cost of tires: '))
+    return tires
+
+def get_maintenance():
+    maintenance = float(input('Enter the monthly cost of maintenance: '))
+    return maintenance
+
+main()
+    
+# 6 January 2021
+# Starting Out With Python Functions Exercise 5
+# Write a program that gets the actual value of a property and caclulates and displays it's
+# assessment value (60% of actual value) and property tax ($0.72 of $100 of assessment value)
+
+ASSESSMENT_PERCENTAGE = .6
+
+PROPERTY_TAX_PERCENTAGE = .0072
+
+def main():
+    # gathers the actual value to calculate the assessment value and property tax of a property
+    assessment = calculate_assessment_value()
+    property_tax = assessment * PROPERTY_TAX_PERCENTAGE
+    print('Assessment Value: $', format(assessment, ',.2f'), sep='')
+    print('Property Tax: $', format(property_tax, ',.2f'), sep='')
+
+def calculate_assessment_value():
+    actual_val = float(input('Enter the actual value of the property: '))
+    assessment_val = actual_val * ASSESSMENT_PERCENTAGE
+    return assessment_val
+ 
+main()
+
+# 6 January 2021
+# Starting Out With Python Functions Exercise 6
+# Get the fat grams and carbs grams from the user, calculate the calories from fat and the calories
+# from carbs and display the results.
+
+def main():
+    fat_calories = calculate_fat_calories()
+    carb_calories = calculate_carbs_calories()
+    total_calories = fat_calories + carb_calories
+    print("Calories From Fat:", format(fat_calories, ',.2f'))
+    print("Calories From Carbs:", format(carb_calories, ',.2f'))
+    print("Total Calories:", format(total_calories, ',.2f'))
+
+def calculate_fat_calories():
+    fat = float(input("Enter the amount of fat grams you've consumed in a day: "))
+    calories = fat * 9
+    return calories
+
+def calculate_carbs_calories():
+    carbs = float(input("Enter the amount of carbs grams you've consumed in a day: "))
+    calories = carbs * 4
+    return calories
+
+main()

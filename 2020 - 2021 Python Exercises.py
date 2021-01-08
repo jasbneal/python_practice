@@ -360,3 +360,38 @@ def calculate_carbs_calories():
     return calories
 
 main()
+
+# 7 January 2021
+# Starting Out With Python Functions Exercise 7
+# Collect the amount of tickets sold for Class A ($20), Class B ($15) and Class C (10)
+# Display the total income generated from ticket sales
+
+A_TICKET_COST = 20
+
+B_TICKET_COST = 15
+
+C_TICKET_COST = 10
+
+def main():
+    a_tickets = calculate_a_tickets()
+    b_tickets = calculate_b_tickets()
+    c_tickets = calculate_c_tickets()
+    total_tickets = a_tickets + b_tickets + c_tickets
+    print('The total revenue from ticket sales is $', format(total_tickets, ',.2f'), sep='')
+
+def calculate_a_tickets():
+    ticket = int(input('How many Class A tickets were sold? '))
+    total = ticket * A_TICKET_COST
+    return total
+
+def calculate_b_tickets():
+    ticket = int(input('How many Class B tickets were sold? '))
+    total = ticket * B_TICKET_COST
+    return total
+
+def calculate_c_tickets():
+    ticket = int(input('How many Class C tickets were sold? '))
+    total = ticket * C_TICKET_COST
+    return total
+
+main()

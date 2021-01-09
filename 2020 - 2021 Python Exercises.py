@@ -395,3 +395,132 @@ def calculate_c_tickets():
     return total
 
 main()
+
+# 8 January 2021
+# Starting Out With Python Functions Exercise 8
+# Write a program that receives the square feet of wall space to be painted and the price
+# per paint per gallon. Calculate the number of gallons of paint required, hours of labor
+# required, cost of the paint, labor charges and total cost of the paint job.
+# For every 112 sqft = 1 gallon on paint, 8 hours of labor, $35/hr of labor
+
+MIN_SQFT= 112
+
+MIN_PAINT_GALLON = 1
+
+MIN_LABOR_HOURS = 8
+
+LABOR_HOURLY_RATE = 35
+
+def main():
+    sqft = int(input('Enter the square feet of wall space to be painted: '))
+
+    while sqft < 112:
+        print('ERROR: Please enter a minimum of 112 square feet of wall space.')
+        sqft = int(input('Enter another total of square feet of wall space: '))
+        
+    gallon_price = float(input('Enter the price per gallon in USD: '))
+    paint_gallons_total = calculate_paint(sqft)
+    print('Gallons of Paint Required:', format(paint_gallons_total, '.2f'))
+
+    labor_hours_total = labor_hours(sqft)
+    print('Hours of Labor Required:', format(labor_hours_total, '.1f'))
+
+    paint_cost = gallon_price * paint_gallons_total
+    print('Cost of Paint: $', format(paint_cost, ',.2f'), sep='')
+        
+    labor_total = labor_charges(sqft)
+    print('Labor Charges: $', format(labor_total, ',.2f'), sep='')
+              
+    grand_total = paint_cost + labor_total
+    print('Total Cost of the Job: $', format(grand_total, ',.2f'), sep='')
+
+def calculate_paint(sqft):
+    gallons = sqft / MIN_SQFT
+    return gallons
+
+def labor_hours(sqft):
+    hours = (sqft / MIN_SQFT) * 8
+    return hours
+
+def labor_charges(sqft):
+    charges = (sqft / MIN_SQFT) * 8 * LABOR_HOURLY_RATE
+    return charges
+
+main()
+
+# 8 January 2021
+# Starting Out With Python Functions Exercise 9
+# Get the sales for the month and display the amount of county, state and total sales tax.
+# state tax rate = 5%
+# county tax rate = 2.5%
+
+#Global variables for the state and county tax percentages
+
+STATE_TAX_RATE = .05
+
+COUNTY_TAX_RATE = .025
+
+def main():
+    #Gets the month's sales and generates the state, county and total taxes for that month
+    sales = float(input("Enter this month's sales: "))
+
+    county_tax = calculate_county_tax(sales)
+    print("County Sales Tax: $", format(county_tax, ',.2f'), sep='')
+
+    state_tax = calculate_state_tax(sales)
+    print("State Sales Tax: $", format(state_tax, ',.2f'), sep='')
+
+    total_tax = county_tax + state_tax
+    print("Total Sales Tax: $", format(total_tax, ',.2f'), sep='')
+
+def calculate_county_tax(sales):
+    county_tax = sales * COUNTY_TAX_RATE
+    return county_tax
+
+def calculate_state_tax(sales):
+    state_tax = sales * STATE_TAX_RATE
+    return state_tax
+
+main()
+
+# 8 January 2021
+# Starting Out With Python Functions Exercise 10
+# Write a function named feet_to_inches that accepts a number of feet as an argument and
+# returns the number of inches in that many feet. Use the program in a function to convert
+# and display feet to inches.
+
+def main():
+    #Gets the number of feet and converts it to inches
+    feet = int(input('Enter a number of feet: '))
+    inches = feet_to_inches(feet)
+    print(feet, 'feet =', inches, 'inches')
+
+def feet_to_inches(feet):
+    inches = 12 * feet
+    return inches
+
+main()
+
+# 8 January 2021
+# Starting Out With Python Functions Exercise 11
+# Display two random numbers and prompt the user to answer the sum of the number.
+# If it's correct, a congratulations message should be displayed. If the answer is incorrect,
+# the correct answer should be displayed.
+
+import random
+
+number_1 = random.randint(1, 500)
+
+number_2 = random.randint(1, 500)
+
+correct_total = number_1 + number_2 
+
+print('   ', number_1)
+print('+  ', number_2)
+
+total = float(input('Enter the total of the two numbers: '))
+
+if total == correct_total:
+    print('CONGRATULATIONS! That is the correct answer!')
+else:
+    print('The correct answer is', correct_total)

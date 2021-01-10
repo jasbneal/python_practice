@@ -665,3 +665,56 @@ for number in range(1, 101):
 print('\n')
 print('Even Numbers in the List:', format(even_total, '.0f'))
 print('Odd Numbers in the List:', format(odd_total, '.0f'))
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 17
+# Write a Boolean function named is_prime which takes an integer as an argument and returns true if the
+# argument is a prime number, or false otherwise. Use the function in a program that prompts the user to
+# enter a number and then displays a message indicating whether the number is prime.
+
+def main():
+    number = int(input('Enter a number: '))
+    if is_prime(number):
+        print('This number is a prime number!')
+    else:
+        print('This is not a prime number.')
+
+def is_prime(number):
+    # Eliminates 1 from being considered.
+    # If the number is divisible by any other number, return false otherwise return true. 
+    if number <= 1:
+        return False
+    else:
+        for i in range(2, number):
+            if number %  i == 0:
+                return False
+    return True
+
+main()
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 18
+# Using the is_prime function, write a program that displays all prime numbers from 1 to 100.
+
+def main():
+    # Prints all the prime numbers from 1 to 100
+    print('Prime Numbers from 1 to 100')
+    print('---------------------------')      
+
+    for number in range(1, 101):
+        if is_prime(number):
+            print(number)
+        
+def is_prime(number):
+    # Eliminates 1 from being considered.
+    # If the number is divisible by any other number, return false otherwise return true. 
+    if number <= 1:
+        return False
+    else:
+        for i in range(2, number):
+            if number %  i == 0:
+                return False
+    return True
+
+main()
+

@@ -524,3 +524,144 @@ if total == correct_total:
     print('CONGRATULATIONS! That is the correct answer!')
 else:
     print('The correct answer is', correct_total)
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 12
+# Write a function named max that accepts two ineger values as arguments and returns
+# the value that is greater of the two. Use the function in a program that prompts
+# the user to enter two ineger values and displays the value that is greater
+# of the two.
+
+def main():
+
+    #Gets two integers and displays the greater integer of the two
+    num1 = int(input('Enter an integer: '))
+    num2 = int(input('Enter a different integer: '))
+    max_num = max(num1, num2)
+    print('The greater integer of the two is', max_num)
+
+def max(num1, num2):
+
+    #Accepts two integers are arguments and returns the value that is greater
+    if num1 > num2:
+        return num1
+    else:
+        return num2
+
+main()
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 13
+# Write a function named falling_distance that accepts an object's falling time
+# in seconds as an argument and returns the distance the object has falled. Write
+# a program that calls the function in a loop that passes the values 1-10 as
+# arguments and displays the return value.
+# distance = (1/2)g(t ** 2) where g=9.8
+
+print('Seconds\t\tDistance (in meters)')
+print('-------\t\t--------------------')
+
+def main():
+    for seconds in range(1, 11):
+        distance = falling_distance(seconds)
+        print(seconds, '\t\t', format(distance, ',.1f'))
+
+def falling_distance(seconds):
+    d = (1/2) * 9.8 * (seconds ** 2)
+    return d
+
+main()
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 14
+# Write a function named kinetic_energy that accepts an object's mass and velocity
+# as arguments. The function should return the KE of the object. Write a program
+# that asks the user to enter values for mass and velocity, calls the kinetic_energy
+# function and displays the object's KE.
+# KE = (1/2) * mass * (velocity ** 2)
+
+def main():
+    #Gets the mass and velocity of an object to display it's KE
+    mass = float(input('Enter the mass (in kilograms) of an object: '))
+    velocity = float(input("Enter the object's velocity (in meters/second): "))
+    KE = kinetic_energy(mass, velocity)
+    print('KE =', format(KE, ',.1f'))
+
+def kinetic_energy(mass, velocity):
+    KE = (1/2) * mass * (velocity ** 2)
+    return KE
+
+main()
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 15
+# Write a program that asks the user for five test scores and eisplays a letter
+# grade for each test score and average test score. It should have a calc_average
+# function and a determine_grade function.
+
+#Global variable to determine total number of test scores
+TOTAL_TESTS = 5
+
+def main():
+    score1 = int(input('Enter your first test score: '))
+    score2 = int(input('Enter your second test score: '))
+    score3 = int(input('Enter your third test score: '))
+    score4 = int(input('Enter your fourth test score: '))
+    score5 = int(input('Enter your fifth test score: '))
+
+    print('\n')
+    
+    print('Test Score\tGrade')
+    print('----------\t-------')
+
+    for score in [score1, score2, score3, score4, score5]:
+        grade = determine_grade(score)
+        print(score, '\t\t', grade)
+
+    average = calc_average(score1, score2, score3, score4, score5)
+    print('\n')
+    print('Your test score average: ', average)
+
+def calc_average(score1, score2, score3, score4, score5):
+    average = (score1 + score2 + score3 + score4 + score5) / TOTAL_TESTS
+    return average
+
+def determine_grade(score):
+    if score >= 90 and score <= 100:
+        grade = 'A'
+    elif score >= 80 and score <= 89:
+        grade = 'B'
+    elif score >= 70 and score <= 79:
+        grade = 'C'
+    elif score >= 60 and score <= 69:
+        grade = 'D'
+    else:
+        grade = 'F'
+    return grade
+
+main()
+
+# 9 January 2021
+# Starting Out With Python Functions Exercise 16
+# Write a program that generates 100 random numbers and keeps a count of how many
+# of those random numbers are even and how many of them are odd.
+
+import random
+
+even_total = 0.0
+odd_total = 0.0
+
+print('No.\tValue')
+print('---\t-----')
+
+for number in range(1, 101):
+    value = random.randint(1, 10000)
+    print(number, '\t', value)
+    if (value % 2) == 0:
+        even_total += 1
+    else:
+        odd_total += 1
+
+print('\n')
+print('Even Numbers in the List:', format(even_total, '.0f'))
+print('Odd Numbers in the List:', format(odd_total, '.0f'))

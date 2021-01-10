@@ -718,3 +718,116 @@ def is_prime(number):
 
 main()
 
+# 10 January 2021
+# Starting Out With Python Functions Exercise 19
+# Write a program that prompts the user to enter an account's present value,
+# monthly interest rate, and number of months the money will be left in the
+# account. Pass these values to a function that returns the future value and
+# display the account's future value.
+
+def main():
+    #Gathers the present value, interest rate, and number of months
+    #Calculates the future value using calculate_future_value function
+    present = float(input('Enter the current amount in your savings account: '))
+    i = float(input('Enter the monthly interest rate (as a decimal): '))
+    t = float(input('Enter the number of months the money will be in the savings account: '))
+    future_value = calculate_future_value(present, i, t)
+    print('Future Value of Account: $', format(future_value, ',.2f'), sep='')
+
+def calculate_future_value(present, i, t):
+    future_value = present * ((1 + i) ** t)
+    return future_value
+
+main()
+
+# 10 January 2021
+# Starting Out With Python Functions Exercise 20
+# Write a program that generates a number in the range of 1 through 100, and asks
+# the user to guess what the number is. If the user's guess is higher than the
+# random number, the program should display "Too high, try again." If the user's guess
+# is lower than the random number, the program should display "Too low, try again."
+# If the user guesses the number, the application should congratulate the user and
+# generate a new random number so the game can start over.
+
+import random
+
+total = 1
+
+keep_going = 'y'
+
+while keep_going == 'y':
+    num = random.randint(1, 101)
+    guess = int(input('Guess a number from 1 to 100: '))
+
+    while num != guess:
+        if guess > num:
+            print('Too high, try again.')
+            total += 1
+        else:
+            print('Too low, try again.')
+            total += 1
+        guess = int(input('Enter another number: '))
+    
+    if num == guess:
+        print("Congratulations! You've entered the correct number!")
+        print('It took you', total, 'guesses to guess the correct number.')
+
+    print('\n')
+    keep_going = input('Would you like to play again (enter y for yes)? ')
+    total = 1
+
+# 10 January 2021
+# Starting Out With Python Functions Exercise 21
+# Write a program that lets the user play the game of Rock, Paper, Scissors against the
+# computer. For the computer's choice, a random number in the range of 1 though 3 should
+# be chosen. 1=rock, 2=paper, 3=scissors. The computer's choice should be displayed after
+# the user chooses and then the winner should be displayed. The user can determine if
+# another game wil be played.
+
+import random
+
+def main():
+    #keep_going variable determines if a new game will be played
+    # Gets the player's choice, determines the computer's choice and displays the winner.
+    keep_going = 'y'
+    while keep_going == 'y':
+        computer_choice = comp_choice()
+        player_choice = input('Choose rock, paper or scissors: ')
+        print("Computer's Choice:", computer_choice)
+        winner(computer_choice, player_choice)
+        keep_going = input('Would you like to play again (enter y for yes)? ')
+    
+def comp_choice():
+    #Determines the computer choice and assigns rock, paper or scissors to the selected number.
+
+    num = random.randint(1, 4)
+
+    if num == 1:
+        choice = 'rock'
+        return choice
+    elif num == 2:
+        choice = 'paper'
+        return choice
+    else:
+        choice = 'scissors'
+        return choice
+
+def winner(comp_choice, player_choice):
+    #Determines the winner of the game or if it's a tie.
+    
+    if comp_choice == 'rock' and player_choice == 'scissors':
+        print('The computer wins!')
+    elif player_choice == 'rock' and comp_choice == 'scissors':
+        print('You win!')
+    elif comp_choice == 'scissors' and player_choice == 'paper':
+        print('The computer wins!')
+    elif player_choice == 'scissors' and comp_choice == 'paper':
+        print('You win!')
+    elif comp_choice == 'paper' and player_choice == 'rock':
+        print('The computer wins!')
+    elif player_choice == 'rock' and comp_choice == 'paper':
+        print('You win!')
+    else:
+        print("It's a tie! The game must be played again to determine the winner.")
+
+main()

@@ -1,0 +1,17 @@
+# 18 January 2021
+# Create a function that returns the factorial of any number you give it.
+
+def main():
+
+    number = int(input('Enter a number between 1 and 1000: '))
+    print(number, '! = ', determine_factorial(number), sep='')
+
+
+def determine_factorial(number):
+    # Determines the factorial of a number and keeps a running total
+    total = 1.0
+    for number in range(number, 0, -1):
+        total = total * number
+    return total
+
+main()

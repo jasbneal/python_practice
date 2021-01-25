@@ -145,3 +145,26 @@ while line != '':
     line = infile.readline()
 
 infile.close() 
+
+# 24 January 2021
+# Starting Out With Python Exercise 4
+# Assume that a file containing a series of names (as strings) is named names.txt
+# and exists on the computer's disk. Write a program that displays the number of
+# names that are stored in the file. (Hint: Open the file and read every string
+# stored in it. Use a variable to keep a count of the number of items that are
+# read from the file.)
+
+infile = open('my_name.txt', 'r')
+
+read_position = 0.0
+
+line = infile.readline()
+
+while line != '':
+    line = line.rstrip('\n')
+    read_position += 1
+    line = infile.readline()
+
+infile.close()
+
+print('Number of names stored in this file:', read_position)

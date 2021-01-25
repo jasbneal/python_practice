@@ -288,3 +288,46 @@ except IOError as msg:
 
 except ValueError as msg:
     print(msg)
+
+# 25 January 2021
+# Starting Out With Python Exercise 10
+# The Springfork Amateur Golf Club has a tournament every weekend. The club president
+# has asked you to write two programs:
+# 1. A program that will read each player's name and golf score as keyboard input,
+#    and then save these records in a file named golf.txt. (Each record will have
+#    a field for the player's name and a field for the player's score.)
+# 2. A program that reads the records from the golf.txt file and displays them.
+
+def write_golf_data():
+
+    keep_going = 'y'
+
+    golf_file = open('golf.txt', 'w')
+
+    while keep_going == 'y':
+        name = input("Enter the player's name: ")
+        score = float(input("Enter the player's score: "))
+        golf_file.write(name + '\n')
+        golf_file.write(str(score) + '\n')
+        keep_going = input('Would you like to write another score to the file (enter y ' + \
+                       'for yes)? ')
+
+    print('The data has been written to the golf.txt file.')
+
+    golf_file.close()
+
+def read_golf_data():
+
+    golf_file = open('golf.txt', 'r')
+
+    name = golf_file.readline()
+
+    while name != '':
+        score = golf_file.readline()
+        score = float(score.rstrip('\n'))
+        name = name.rstrip('\n')
+        print(name)
+        print(score)
+        name = golf_file.readline()
+
+    golf_file.close()

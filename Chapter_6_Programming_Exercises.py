@@ -154,7 +154,7 @@ infile.close()
 # stored in it. Use a variable to keep a count of the number of items that are
 # read from the file.)
 
-infile = open('my_name.txt', 'r')
+infile = open('names.txt', 'r')
 
 read_position = 0.0
 
@@ -168,3 +168,123 @@ while line != '':
 infile.close()
 
 print('Number of names stored in this file:', read_position)
+
+# 24 January 2021
+# Starting Out With Python Exercise 5
+# Assume that a file containing a series of integers is named numbers.txt and
+# exists on the computer's disk. Write a program that reads all of the numbers
+# stored in the file and calculates their total.
+
+total = 0.0
+
+infile = open('numbers.txt', 'r')
+
+for line in infile:
+    amount = float(line)
+    total += amount
+
+print('The total of the numbers in this file is', format(total, ',.1f'))
+
+infile.close()
+
+# 24 January 2021
+# Starting Out With Python Exercise 6
+# Assume that a file containing a series of integers is named numbers.txt and
+# exists on the computer's disk. Write a program that calculates the average of
+# all the numbers stored in the file.
+
+read_position = 0
+
+num_total = 0
+
+infile = open('numbers.txt', 'r')
+
+for line in infile:
+    num = float(line)
+    read_position += 1
+    num_total += num
+
+average = num_total / read_position
+
+print('The average of the numbers stored in this file is', format(average, ',.1f'))
+
+infile.close()
+
+# 24 January 2021
+# Starting Out With Python Exercise 7
+# Write a program that writes a series of random numbers to a file. Each random
+# number should be in the range of 1 through 500. The applications should let
+# the user specify how many random numbers the file will hold. 
+
+import random
+
+outfile = open('random.txt', 'w')
+
+total_num = int(input("Enter the total amount of random numbers you'd like" + \
+                        "write to file random.txt: "))
+
+for i in range(1, total_num + 1):
+    num = random.randint(1, 501)
+    outfile.write(str(num) + '\n')
+
+print(total_num, 'numbers have been written to the random.txt file.')
+
+outfile.close()
+
+# 24 January 2021
+# Starting Out With Python Exercise 8
+# Assuming you have completed exercise 7, write a program that reads the random
+# numbers from the file, displays the numbers and then displays the total of
+# the numbers and the number of random numbers read from the file.
+
+read_position = 0
+
+total = 0
+
+infile = open('random.txt', 'r')
+
+for line in infile:
+    line = line.rstrip('\n')
+    num = int(line)
+    print(line)
+    total += num
+    read_position += 1
+
+print()
+print('Total of the Numbers:', format(total, ',.1f'))
+print('Number of Random Numbers in the File:', format(read_position, ',.0f'))
+
+infile.close()
+
+# 24 January 2021
+# Starting Out With Python Exercise 9
+# Modify the program that you wrote for exercise 6 so it handles the following
+# exceptions: It should handle any IOError exceptions that are raised when the
+# file is opened and data is read from it. It should handle any ValueError
+# exceptions that are raised when the items that are read from the file are
+# converted to a number.
+
+try:
+    
+    read_position = 0
+
+    num_total = 0
+
+    infile = open('numbers.txt', 'r')
+
+    for line in infile:
+        num = float(line)
+        read_position += 1
+        num_total += num
+
+    average = num_total / read_position
+
+    print('The average of the numbers stored in this file is', format(average, ',.1f'))
+
+    infile.close()
+
+except IOError as msg:
+    print(msg)
+
+except ValueError as msg:
+    print(msg)

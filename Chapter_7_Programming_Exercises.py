@@ -192,3 +192,110 @@ def calculate_list_total(list):
     return total
     
 main() 
+
+# 3 February 2021
+# Starting Out With Python Exercise 5
+# Write a program that reads the contents of the charge_accounts.txt file into a
+# list. The program should then ask the user to enter a charge account number.
+# The program should determine whether the number is valid by searching for it
+# in the list. If the number is in the list, the program will display a message
+# indicating the number is valid. If the number is not in the list, the program
+# should display a message indicating the number is invalid.
+
+charge_accounts_list = []
+
+infile = open('charge_accounts.txt', 'r')
+
+search = int(input('Enter a charge account number: '))
+
+line = infile.readline()
+
+while line != '':
+    line = int(line.rstrip('\n'))
+    charge_accounts_list.append(line)
+    line = infile.readline()
+
+infile.close()
+
+if search in charge_accounts_list:
+    print('The number is valid.')
+else:
+    print('The number is invalid.')
+
+# 3 February 2021
+# Starting Out With Python Exercise 6
+# In a program, write a function that accepts two arguments: a list, and a number
+# n. Assume that the list contains numbers. The function should display all of
+# the numbers in the list that are greater than the number n.
+
+def main():
+    # Gets the value of n and creates a number list
+    n = int(input('Enter a number: '))
+
+    number_list = [1, 20, 300, 4000, 50000, 600000, 7000000]
+
+    print('Numbers Greater Than', n)
+    print('--------------------------')
+
+    greater_than(number_list, n)
+
+def greater_than(list_name, n):
+    # Function to display all numbers greater than n from the given list
+    for i in list_name:
+        if i > n:
+            print(i)
+
+main()
+
+# 3 February 2021
+# Starting Out With Python Exercise 7
+# The local driver's license office has asked you to create an application that grades
+# the written portion of the driver's license exam. The exam has 20 multiple-choice
+# questions. Here are the correct answers: 1.A, 2.C, 3.A, 4.A, 5.D, 6.B, 7.C, 8.A,
+# 9.C, 10.B, 11.A, 12.D, 13.C, 14.A, 15.D, 16.C, 17.B, 18.B, 19.D, 20.A
+# Your progarm should store these correct answers in a list and read the student's
+# answers for each of the 20 questions from a text file store the answers in another
+# list. After the student's answers have been read from the file, the program should
+# display a message indicating whether the student passed or failed the exam (15+/20 to
+# pass). It should then display the total number of correctly answers questions,
+# the total number of incorrectly answered questions and a list showing the question
+# numbers of the incorrectly answered questions.
+
+answer_sheet = ['A', 'C', 'A', 'A', 'D', 'B', 'C', 'A', 'C', 'B', 'A', 'D', 'C', 'A', 'D', 'C','B', 'B', 'D', 'A']
+
+infile = open('student_answers.txt', 'r')
+
+student_answers = []
+
+for line in infile:
+    answer = line.rstrip('\n')
+    student_answers.append(answer)
+
+infile.close()
+
+index = 0
+total_correct = 0
+total_incorrect = 0
+
+incorrect_answer_numbers = []
+
+for i in range(20):
+    if answer_sheet[index] == student_answers[index]:
+        total_correct += 1
+    else:
+        total_incorrect += 1
+        incorrect_answer_numbers.append(index + 1)
+    index += 1
+
+if total_correct >= 15:
+    print('PASSED')
+else:
+    print('FAILED')
+
+print('Correctly Answered Questions:', total_correct)
+print('Incorrectly Answered Questions:', total_incorrect)
+print()
+
+print('Incorrectly Answered Question Numbers:')
+for i in incorrect_answer_numbers:
+    print(i)

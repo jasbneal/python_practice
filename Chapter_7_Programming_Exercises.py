@@ -263,6 +263,7 @@ main()
 
 answer_sheet = ['A', 'C', 'A', 'A', 'D', 'B', 'C', 'A', 'C', 'B', 'A', 'D', 'C', 'A', 'D', 'C','B', 'B', 'D', 'A']
 
+# Read contents of student_answers file and adds them to student_answers list.
 infile = open('student_answers.txt', 'r')
 
 student_answers = []
@@ -279,6 +280,7 @@ total_incorrect = 0
 
 incorrect_answer_numbers = []
 
+# Loop evaluates the correct answers and adds the incorrect question numbers to a list.
 for i in range(20):
     if answer_sheet[index] == student_answers[index]:
         total_correct += 1
@@ -287,6 +289,7 @@ for i in range(20):
         incorrect_answer_numbers.append(index + 1)
     index += 1
 
+# Determine if the student passed or failed
 if total_correct >= 15:
     print('PASSED')
 else:

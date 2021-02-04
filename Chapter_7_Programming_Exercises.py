@@ -339,3 +339,80 @@ if search in boys_names:
 
 if search not in girls_names and search not in boys_names:
     print(search, 'is not a popular name for boys or girls.')
+
+# 4 February 2021
+# Starting Out With Python Exercise 9
+# Write a program that reads the USPopulation.txt file's contents into a list. The first
+# number is for the year 1950. The program should display the following data:
+# average annual change in population during that time period, year with the
+# greatest increase in population during the time period, year with the smallest
+# increase in population during the time period.
+
+US_population = []
+population_increase = []
+
+# Opens the USPopulation.txt file and writes the contents into the US_population list.
+infile = open('USPopulation.txt', 'r')
+
+for line in infile:
+    population = int(line.rstrip('\n'))
+    US_population.append(population)
+
+infile.close()
+
+# Calculates the population difference for each year range, puts the difference into
+# the population_increase list and adds them to the total accumulator. 
+index = 0
+total = 0
+for i in range(len(US_population) - 1):
+    population_change = US_population[index + 1] - US_population[index]
+    total += population_change
+    population_increase.append(population_change)
+    index += 1
+
+# Calculates the average change in population
+average_change = total / len(population_increase)
+print('Average Annual Change in Population:', format(average_change, ',.2f'))
+
+# Calculates the year range with the lowest increase in population
+min_index = population_increase.index(min(population_increase))
+min_Year1 = min_index + 1950
+print('Years with the lowest increase in population:', min_Year1, '-', min_Year1 + 1)
+
+# Calculates the year range with the highest increase in population
+max_index = population_increase.index(max(population_increase))
+max_Year1 = max_index + 1950
+print('Years with the highest increase in population:', max_Year1, '-', max_Year1 + 1)
+
+# 4 February 2021
+# Starting Out With Python Exercise 10
+# The WorldSeriesWinners.txt file contains a hronological list of the World Series
+# winning teams from 1903 through 2009. (The first line in the file is the name of the
+# team that won in 1903, and the last line is the name of the team that won in 2009.
+# Note that the World Series was not played in 1904 or 1994. Write a program that lets
+# the user enter the name a team and then display the number of times that team has won
+# the World Series in the time period from 1903 through 2009.
+
+WorldSeriesWinners = []
+
+# Reads the contents of the WorldSeriesWinner file and puts it into the
+# WorldSeriesWinners list
+infile = open('WorldSeriesWinners.txt', 'r')
+
+for line in infile:
+    team = line.rstrip('\n')
+    WorldSeriesWinners.append(team)
+
+infile.close()
+
+# Gets the name from the user and uses a loop to calculate how often the name
+# appears in the WorldSeries list
+search = input('Enter the name of a team: ')
+
+total_wins = 0
+for name in WorldSeriesWinners:
+    if name == search:
+        total_wins += 1
+
+print(search, 'Wins:', total_wins)
+

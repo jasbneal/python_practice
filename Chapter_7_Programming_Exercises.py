@@ -302,3 +302,40 @@ print()
 print('Incorrectly Answered Question Numbers:')
 for i in incorrect_answer_numbers:
     print(i)
+
+# 3 February 2021
+# Starting Out With Python Exercise 8
+# Write a program that reads the contents of the GirlNames.txt and BoyNames.txt
+# files into two separate lists. The user should be able to enter a boy's name,
+# a girl's name, or both, and the application will display messages indicating
+# whether the names were among the most popular.
+
+girls_names = []
+boys_names = []
+
+infile_girls = open('GirlNames.txt', 'r')
+
+for line in infile_girls:
+    name = line.rstrip('\n')
+    girls_names.append(name)
+
+infile_girls.close()
+
+infile_boys = open('BoyNames.txt', 'r')
+
+for line in infile_boys:
+    name = line.rstrip('\n')
+    boys_names.append(name)
+
+infile_boys.close()
+
+search = input('Enter a name: ')
+
+if search in girls_names:
+    print(search, 'is among the most popular girl names.')
+
+if search in boys_names:
+    print(search, 'is amoung the most popular boy names.')
+
+if search not in girls_names and search not in boys_names:
+    print(search, 'is not a popular name for boys or girls.')

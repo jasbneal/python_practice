@@ -416,3 +416,41 @@ for name in WorldSeriesWinners:
 
 print(search, 'Wins:', total_wins)
 
+# 4 February 2021
+# Starting Out With Python Exercise 11
+# The Lo Shu Magic Square is a grid with 3 rows and 3 columns. The Lo Shu Magic Square has
+# the following properties: the grid contains the numbers 1 through 9 exactly, the sum
+# of each row, each column and each diagonal all add up to the same number. In a program
+# you can simulate a magic square using a two-dimensional list. Write a function that
+# accepts a two-dimensional list as an argument and determines whether the list is a Lo
+# Shu Magic Square. Test the function in a program.
+        
+def main():
+    # Creates a lo_shu list and gathers the numbers via loop from the user to create a magic square
+    lo_shu = [[0, 0, 0],
+              [0, 0, 0],
+              [0, 0, 0]]
+
+    for r in range(3):
+        for c in range(3):
+            lo_shu[r][c] = int(input('Enter a number: '))
+
+    determine_lo_shu(lo_shu)
+
+def determine_lo_shu(list_name):
+    # Calculates the different sum options for rows, columns and diagonals
+    sum1 = list_name[0][0] + list_name[0][1] + list_name[0][2]
+    sum2 = list_name[1][0] + list_name[1][1] + list_name[1][2]
+    sum3 = list_name[2][0] + list_name[2][1] + list_name[2][2]
+    sum4 = list_name[0][0] + list_name[1][0] + list_name[2][0]
+    sum5 = list_name[0][1] + list_name[1][1] + list_name[2][1]
+    sum6 = list_name[0][2] + list_name[1][2] + list_name[2][2]
+    sum7 = list_name[0][0] + list_name[1][1] + list_name[2][2]
+    sum8 = list_name[2][0] + list_name[1][1] + list_name[0][2]
+
+    if sum1 == 15 and sum2 == 15 and sum3 == 15 and sum4 == 15 and sum5 == 15 and sum6 == 15 and sum7 == 15 and sum8 == 15:
+        print('Congratulations! This is a Lo Shu Magic Square!')
+    else:
+        print('This is not a Lo Shu Magic Square.')
+
+main()

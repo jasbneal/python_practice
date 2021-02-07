@@ -104,3 +104,42 @@ for ch in string:
     else:
         print('An invalid character is in the string.')
 
+# 6 February 2021
+# Starting Out With Python Programming Exercise 5
+# Write a program that asks the user to enter a 10-character telephone
+# number in the format XXX-XX-XXX. The application should display the
+# telephone number with any alphabetic characters that appeared in the
+# original translated to their numeric equivalent. Ex. 555-GET-FOOD shoudl
+# display 555-438-3663.
+
+tel_num = input('Enter a 10-character telephone number in the XXX-XX-XXXX format: ')
+numeric_tel_num = ''
+
+# Determines whether the ch is a digit, letter, dash or other and
+# adds the new character to the numeric_tel_num string
+for ch in tel_num:
+    if ch.isdigit():
+        numeric_tel_num += ch
+    if ch == '-':
+        numeric_tel_num += '-'
+    if ch.isalpha():
+        if ch.upper() == 'A' or ch.upper() == 'B' or ch.upper() == 'C':
+            numeric_tel_num += '2'
+        elif ch.upper() == 'D' or ch.upper() == 'E' or ch.upper() == 'F':
+            numeric_tel_num += '3'
+        elif ch.upper() == 'G' or ch.upper() == 'H' or ch.upper() == 'I':
+            numeric_tel_num += '4'
+        elif ch.upper() == 'J' or ch.upper() == 'K' or ch.upper() == 'L':
+            numeric_tel_num += '5'
+        elif ch.upper() == 'M' or ch.upper() == 'N' or ch.upper() == 'O':
+            numeric_tel_num += '6'
+        elif ch.upper() == 'P' or ch.upper() == 'Q' or ch.upper() == 'R' or ch.upper() == 'S':
+            numeric_tel_num += '7'
+        elif ch.upper() == 'T' or ch.upper() == 'U' or ch.upper() == 'V':
+            numeric_tel_num += '8'
+        elif ch.upper() == 'W' or ch.upper() == 'X' or ch.upper() == 'Y' or ch.upper() == 'Z':
+            numeric_tel_num += '9'
+        else:
+            print('ERROR: An invalid character has been entered.')
+            
+print('Phone Number:', numeric_tel_num)

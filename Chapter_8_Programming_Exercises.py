@@ -143,3 +143,91 @@ for ch in tel_num:
             print('ERROR: An invalid character has been entered.')
             
 print('Phone Number:', numeric_tel_num)
+
+# 7 February 2021
+# Starting Out With Python Programming Exercise 6
+# Write a program that reads the text.txt file's contents (stored as one sentence
+# per line) and calculates the average number of words per sentence.
+
+infile = open('text.txt', 'r')
+
+line_total = 0
+word_total = 0
+
+# For loop assigns each line to the line variable, splits it using the space character
+# assigns that the to the line_list. Len(line_list) added to the word_total
+# accumulator and divided by the total lines to get the average words per
+# sentence.
+for line in infile:
+    line_list = line.split(' ')
+    word_total += len(line_list)
+    line_total += 1
+    
+print('Average Words Per Sentence:', word_total / line_total)
+    
+infile.close()
+
+# 7 February 2021
+# Starting Out With Python Programming Exercise 7
+# Write a program that read's the contents of the text.txt file and determines:
+# the number of uppercase letters in the file, number of lowercase letters in the file,
+# number of digits in the file, number of whitespace characters in the file.
+
+infile = open('text.txt', 'r')
+
+upper_total = 0
+lower_total = 0
+digit_total = 0
+whitespace_ch_total = 0
+
+for line in infile:
+    for ch in line:
+        if ch.isupper():
+            upper_total += 1
+        if ch.islower():
+            lower_total += 1
+        if ch.isdigit():
+            digit_total += 1
+        if ch.isspace():
+            whitespace_ch_total +=1
+
+print('Total Uppercase Letters:', format(upper_total, ','))
+print('Total Lowercase Letters:', format(lower_total, ','))
+print('Total Digits:', format(digit_total, ','))
+print('Total Whitespace Characters:', format(whitespace_ch_total, ','))
+
+infile.close()
+
+# 7 February 2021
+# Starting Out With Python Programming Exercise 9
+# Write a program with a function that accepts a string as an argument and returns the
+# number of vowels that the string contains. The application should have another function
+# that accepts a string as an argument and returns the number of consonants that the string
+# contains, The application should let the user enter a string and should display the
+# number of vowels and the number of consonants it contains.
+
+def main():
+
+    string = input('Enter a sentence or sentences: ')
+    print('Total Vowels:', count_vowels(string))
+    print('Total Consonants:', count_consonants(string))
+
+def count_vowels(string):
+    # If the ch is equal to a vowel, +1 to the total_vowels accumulator.
+    total_vowels = 0
+    for ch in string:
+        if ch.upper() == 'A' or ch.upper() == 'E' or ch.upper() == 'I' or ch.upper() == 'O' or ch.upper() == 'U':
+            total_vowels += 1
+    return total_vowels
+
+def count_consonants(string):
+    # Creates a consonants list. If the ch is in the consonants lis, +1 to the
+    # total_consonants accumulator.
+    total_consonants = 0
+    consonants_list = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V','W', 'X', 'Y', 'Z']
+    for ch in string:
+        if ch.upper() in consonants_list:
+            total_consonants += 1
+    return total_consonants
+
+main()

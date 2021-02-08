@@ -231,3 +231,47 @@ def count_consonants(string):
     return total_consonants
 
 main()
+
+# 8 February 2021
+# Starting Out With Python Programming Exercise 11
+# Write a program that accepts as input a sentence in which all of the words are
+# run together but the first character of each word is uppercase. Convert the
+# sentence to a string in which the words are separated by spaces and only the
+# first word starts with an uppercase letter. Ex. "StopAndSmellTheRoses" would
+# be converted to "Stop and smell the roses."
+
+string = input('Enter a sentence where the words run together but the first' + \
+               'character of each word is uppercase. (Ex. StopAndSmellTheRoses): ')
+new_string = ''
+
+# Adds the first uppercase character to the new_string.
+# If the remaining characters are uppercase, converts them to lowercase and adds
+# a space in front of them.
+new_string += string[0].upper()
+for ch in string[1: len(string)]:
+    if ch.isupper():
+        new_string += (' ' + ch.lower())
+    else:
+        new_string += ch.lower()
+
+# Prints the new_string with a period at the end.
+print(new_string, '.', sep='')
+
+# 8 February 2021
+# Starting Out With Python Programming Exercise 12
+# Write a program that accepts a sentence as input and converts each word to "Pig
+# Latin." In one version, to convert a word to Pig Latin you remove the first letter
+# and place that letter at the end of the word. Then you append the string "ay"
+# to the word. Ex. "I slept most of the night" > "Iay leptsay ostmay foay hetay ightnay"
+
+string = input('Enter a sentence without a period: ')
+new_string = ''
+
+# Converts the string to a list of words
+# Copies the second ch to end of word + first ch + 'ay ' to new_string
+string_list = string.split(' ')
+for i in string_list:
+    new_word = i[1: len(i)] + i[0] + 'ay '
+    new_string += new_word
+
+print(new_string)

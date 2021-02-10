@@ -198,6 +198,50 @@ print('Total Whitespace Characters:', format(whitespace_ch_total, ','))
 
 infile.close()
 
+# 9 February 2021
+# Starting Out With Python Programming Exercise 8
+# Write a program with a function that accepts a string as an argument and returns a copy
+# of the string with the first character of each sentence capitalized. Ex. if the argument
+# is "hello. my name is Joe. what is your name?" the function should return the string
+# "Hello. My name is Joe. What is your name?"
+
+def main():
+    string = input('Enter a sentence/sentences with all lowercase letters and periods marking' + \
+                   'the end of each sentence. ')
+    print(capitalize_sentence(string))
+
+def capitalize_sentence(string):
+    # Takes the string and splits it using periods. If the first ch of the item in the list is a space
+    # the next cha is capitalized. If not, the first ch is capitalized. Adds the remaining characters
+    # of the item, either with or without a period.
+    # EDGE CASE: If sentence doesn't end with a period, it's not split for the list and the first
+    # character of the sentence won't be capitalized. 
+
+    new_string = ''
+    string_list = string.split('.')
+
+    for i in string_list:
+        if i[0] == ' ':
+            new_string += i[1].upper()
+            if i[-1] == '.' or i[-1] == '?' or i[-1] == '!':
+                remainder = i[2:len(i)] + ' '
+                new_string += remainder
+            else:
+                remainder = i[2:len(i)] + '. '
+                new_string += remainder
+        else:
+            new_string += i[0].upper()
+            if i[-1] == '.' or i[-1] == '?' or i[-1] == '!':
+                remainder = i[1:len(i)] + ' '
+                new_string += remainder
+            else:
+                remainder = i[1:len(i)] + '. '
+                new_string += remainder
+
+    return new_string
+
+main()
+
 # 7 February 2021
 # Starting Out With Python Programming Exercise 9
 # Write a program with a function that accepts a string as an argument and returns the
@@ -231,6 +275,33 @@ def count_consonants(string):
     return total_consonants
 
 main()
+
+# 9 February 2021
+# Starting Out With Python Programming Exercise 10
+# Write a program that lets the user enter a string and displays the character
+# that appears the most frequently.
+
+string = input('Enter a string: ')
+
+letter_list = []
+count_list = []
+
+# If the ch is a letter and not in the letter_list, adds it and 1 to the letter and count lists.
+# If the ch is a letter and appears in the letter_list, +1 to the item with the same index
+# in the count_list. 
+for ch in string:
+    if ch.isalpha():
+        if ch.lower() not in letter_list:
+            letter_list.append(ch.lower())
+            count_list.append(1)
+        else:
+            if ch.lower() in letter_list:
+                letter_index = letter_list.index(ch.lower())
+                count_list[letter_index] += 1
+
+# Determines the max in the count_list, prints the character at that index from the letter_list. 
+max_index = count_list.index(max(count_list))
+print('The character', letter_list[max_index].upper(), 'appears', max(count_list), 'times.')
 
 # 8 February 2021
 # Starting Out With Python Programming Exercise 11

@@ -56,3 +56,17 @@ for i in range(1, 16):
     numbers[i] = i**2
 
 print(numbers)
+
+# 12 February 2021
+# w3resrouce Python Dictionary Exercise #10
+# Write a Python program to sum all the items in a dictionary.
+
+dictionary = {0:10, 1:-20, 2:30, 3:-40, 4:50, 5:-60, 6:70, 7:-80, 8:90, 9:-100}
+
+# VERSION 1
+total = 0
+for key in dictionary:
+    total += dictionary[key]
+
+#VERSION 2
+total = sum(dictionary.values())

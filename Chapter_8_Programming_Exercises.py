@@ -199,7 +199,7 @@ print('Total Whitespace Characters:', format(whitespace_ch_total, ','))
 infile.close()
 
 # 9 February 2021
-# Starting Out With Python Programming Exercise 8
+# Starting Out With Python Programming Exercise 8 VERSION 1
 # Write a program with a function that accepts a string as an argument and returns a copy
 # of the string with the first character of each sentence capitalized. Ex. if the argument
 # is "hello. my name is Joe. what is your name?" the function should return the string
@@ -239,6 +239,37 @@ def capitalize_sentence(string):
                 new_string += remainder
 
     return new_string
+
+main()
+
+# 11 February 2021
+# Starting Out With Python Programming Exercise 8 VERSION 2
+# Write a program with a function that accepts a string as an argument and returns a copy
+# of the string with the first character of each sentence capitalized. Ex. if the argument
+# is "hello. my name is Joe. what is your name?" the function should return the string
+# "Hello. My name is Joe. What is your name?"
+
+def main():
+    space = int(input('Enter the number of spaces you place between sentences: '))
+    SPACES_VAR = space + 1
+    string = input('Enter a sentence/sentences with all lowercase letters and periods marking' + \
+                   'the end of each sentence. ')
+    print(capitalize_sentence(string, SPACES_VAR))
+
+def capitalize_sentence(string, SPACES_VAR):
+    index = 0
+    new_string = ''
+    capitalize = 0
+    for ch in string:
+        if ch == '.' or ch == '?' or ch == '!':
+            if index != (len(string) +1):
+                capitalize = index + SPACES_VAR
+        if index == capitalize:
+            new_string += ch.upper()
+        else:
+            new_string += ch
+        index += 1
+    print(new_string)
 
 main()
 

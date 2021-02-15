@@ -70,3 +70,37 @@ for key in dictionary:
 
 #VERSION 2
 total = sum(dictionary.values())
+
+# 14 February 2021
+# Starting Out With Python Algorithm Workbench Exercise 1
+# Write a statement that creates a dictionary containing the following key-value
+# pairs:
+# 'a':1
+# 'b':2
+# 'c':3
+
+dct = {'a':1, 'b':2, 'c':3}
+
+print(dct)
+
+# 14 February 2021
+# Starting Out With Python Programming Exercise 1
+# Write a program that creates a dictionary containing course numbers and the room numbers
+# where the courses meet. The program should also create a dictionary containing
+# course numbers and the names of the instructors that teach each course. The program
+# should also create a dictionary containing course numbers and the meeting times
+# of each course. The program should let the user enter a course number, and then it
+# should display the course's room number, instructor and meeting time.
+
+room_num_dct = {'CS101':3004, 'CS102':4501, 'CS103':6755, 'NT110':1244, 'CM241':1411}
+
+instructor_dct = {'CS101':'Haynes', 'CS102':'Alvarado', 'CS103':'Rich', 'NT110':'Burke', 'CM241':'Lee'}
+
+mtg_time_dct = {'CS101':'8:00 a.m.', 'CS102':'9:00 a.m.', 'CS103':'10:00 a.m.', 'NT110':'11:00 a.m.', 'CM241':'1:00 p.m.'}
+
+course = input('Enter your course number: ')
+
+print('Course Number:', course)
+print('Course Room Number:', room_num_dct[course])
+print('Course Instructor:', instructor_dct[course])
+print('Course Meeting Time:', mtg_time_dct[course])

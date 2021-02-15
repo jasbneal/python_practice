@@ -104,3 +104,92 @@ print('Course Number:', course)
 print('Course Room Number:', room_num_dct[course])
 print('Course Instructor:', instructor_dct[course])
 print('Course Meeting Time:', mtg_time_dct[course])
+
+# 15 February 2021
+# Starting Out With Python Programming Exercise 2
+# Write a program that creates a dictionary containing the U.S. states as keys and their capitals as
+# values. The program should then randomly quiz the user by displaying the name of a state and asking
+# the user to enter the state's capital. The program should keep a count of the number of correct
+# and incorrect responses. 
+
+import random
+
+state_capital_dct = {'Alabama': 'Montgomery', 'Alaska':'Juneau', 'Arizona':'Phoenix', 'Arkansas':'Little Rock',
+    'California':'Sacramento', 'Colorado':'Denver', 'Connecticut':'Hartford', 'Delaware':'Dover', 'Florida':'Tallahassee',
+    'Georgia':'Atlanta', 'Hawaii':'Honolulu', 'Idaho':'Boise', 'Illinois':'Springfield', 'Indiana':'Indianapolis',
+    'Iowa':'Des Moines', 'Kansas':'Topeka', 'Kentucky':'Frankfort', 'Louisiana':'Baton Rouge', 'Maine':'Augusta',
+    'Maryland':'Annapolis', 'Massachusetts':'Boston', 'Michigan':'Lansing', 'Minnesota':'Saint Paul', 'Mississippi':'Jackson',
+    'Missouri':'Jefferson City', 'Montana':'Helena', 'Nebraska':'Lincoln', 'Nevada':'Carson City', 'New Hampshire':'Concord',
+    'New Jersey':'Trenton', 'New Mexico':'Santa Fe', 'New York':'Albany', 'North Carolina':'Raleigh', 'North Dakota':'Bismarck', 
+    'Ohio':'Columbus', 'Oklahoma':'Oklahoma City', 'Oregon':'Salem', 'Pennsylvania':'Harrisburg', 'Rhode Island':'Providence',
+    'South Carolina': 'Columbia', 'South Dakota':'Pierre', 'Tennessee':'Nashville', 'Texas':'Austin', 'Utah':'Salt Lake City',
+    'Vermont':'Montpelier', 'Virginia':'Richmond', 'Washington':'Olympia', 'West Virginia':'Charleston', 'Wisconsin':'Madison',
+    'Wyoming':'Cheyenne'}
+    
+keep_going = 'Y'
+total_correct = 0
+total_incorrect = 0
+
+# For loop to determine if the game continues or ends.
+while keep_going.upper() == 'Y':
+    key = random.choice(list(state_capital_dct))
+    print('Enter the capital of', key, end='')
+    response = input(': ')
+    if response == state_capital_dct[key]:
+        print("That's correct!")
+        total_correct += 1
+    else:
+        print("That's incorrect.")
+        total_incorrect += 1
+    keep_going = input('Would you like to keep going (y/n)? ')
+
+print()
+print('Total Correct Answers:', total_correct)
+print('Total Incorrect Answers:', total_incorrect)
+
+# 15 February 2021
+# Starting Out With Python Programming Exercise 3
+# Write a program that uses a dictionary to assign "codes" to each letter of the alphabet.
+# Ex. codes = {'A': '%', 'a':'9', 'B':'@', 'b':'#', etc...}
+# The prgroam should open a specified text file, read its contents, and then use the 
+# dictionary to write an encrypted version of the file's contents to a second file. Each
+# character in the second file should contain the code for the corresponding character in
+# the first file. Write a second program that opens an encrypted file and displays its
+# decrypted contents on the screen.
+
+encrypt_key ={'A':'+', 'a':'3', 'B':'~', 'b':'7', 'C':'-', 'c':'z', 'D':'!', 'd':'a', 'E':')', 'e':'b', 
+'F':'@', 'f':'y', 'G':'(', 'g':'c', 'H':'#', 'h':'x', 'I':'*', 'i':'d', 'J':'$', 'j':'v', 'K':'&', 'k':'e',
+'L':'%', 'l':'w', 'M':'^', 'm':'f', 'N':'?', 'n':'<', 'O':'"', 'o':'u', 'P':'=', 'p':'g', 'Q':'1', 'q':'t',
+'R':'6', 'r':'h', 'S': '9', 's':'s','T':'5', 't':'i', 'U':'4', 'u':'r', 'V':'>', 'v':'j', 'W':'2', 'w':'q',
+'X':':', 'x':'k', 'Y':'8', 'y':'p','Z':'0', 'z':'l'}
+
+infile = open('GirlNames.txt', 'r')
+outfile = open('GirlNamesEncrypted.txt', 'w')
+
+# Encrypts each character in each line and saves the results to the GirlNamesEncrypted.txt file
+for line in infile:
+    line = line.rstrip('\n')
+    for ch in line:
+        new_ch = encrypt_key[ch]
+        outfile.write(new_ch)
+    outfile.write('\n')
+
+infile.close()
+outfile.close()
+
+infile = open('GirlNamesEncrypted.txt','r')
+
+# Uses the k_and_v dictionary view to identify the key associated with the value, adds it to a new string and prints the string.
+k_and_v = encrypt_key.items()
+print(k_and_v)
+
+for line in infile:
+    line = line.rstrip('\n')
+    new_line = ''
+    for ch in line:
+        for key, value in k_and_v:
+            if ch == value:
+                new_line += key
+    print(new_line)
+
+infile.close()

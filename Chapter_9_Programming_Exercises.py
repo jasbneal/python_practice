@@ -193,3 +193,75 @@ for line in infile:
     print(new_line)
 
 infile.close()
+
+# 15 February 2021
+# Starting Out With Python Programming Exercise 4
+# Write a program that opens a specified text file and then displays a list of 
+# all the unique words found in the file. (Hint: Store each word as an element
+# of a set.)
+
+words_set = set()
+
+infile = open('WorldSeriesWinners.txt', 'r')
+
+# For loop that removes the newline character and punctuation from each line, then splits the words
+# based on spaces and adds the words to the words_set set.
+for line in infile:
+    line = line.rstrip('\n')
+    new_line = ''
+    discard = ''
+    for ch in line:
+        if ch == '.' or ch == '?' or ch == '!' or ch == '"' or ch == ',':
+            discard += ch
+        else:
+            new_line += ch.lower()
+    line_list = new_line.split(' ')
+    words_set.update(tuple(line_list))
+
+print('Unique Words in the File')
+print('------------------------')
+for element in words_set:
+    print(element)
+print()
+print('Number of Unique Words in the File:', len(words_set))
+
+infile.close()
+
+# 15 February 2021
+# Starting Out With Python Programming Exercise 5
+# Write a program that reads the contents of a text file. The program should create
+# a dictionary in which the keys are the individual words found in the file and
+# the values are the number of times each word appears. Ex. if the word "the" appears
+# 128 times, the dictionary would contain an element with 'the' as the key and 128
+# as the value. The program should either display the frequency of each word or create
+# a second file containing a list of each word and its frequency.
+
+word_dct = {}
+
+infile = open('text.txt', 'r')
+
+# For loop that removes the newline character and punctuation from each line, then splits the words
+# based on spaces and adds the words to the line_list.
+for line in infile:
+    line = line.rstrip('\n')
+    new_line = ''
+    discard = ''
+    for ch in line:
+        if ch == '.' or ch == '?' or ch == '!' or ch == '"' or ch == ',':
+            discard += ch
+        else:
+            new_line += ch.lower()
+    line_list = new_line.split(' ')
+
+# For loop that determines if the word in the list is in the word_dct. If so, it +1 to value. If not,
+# adds the element with a value of 1.
+    for element in line_list:
+        if element in word_dct:
+            word_dct[element] += 1
+        else:
+            word_dct[element] = 1
+
+for key in word_dct:
+    print('Word:', key, 'Frequency:', word_dct[key])
+
+infile.close()

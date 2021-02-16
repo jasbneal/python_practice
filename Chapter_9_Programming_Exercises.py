@@ -265,3 +265,79 @@ for key in word_dct:
     print('Word:', key, 'Frequency:', word_dct[key])
 
 infile.close()
+
+# 16 February 2021
+# Starting Out With Python Programming Exercise 6
+# Write a program that reads the contents of two text files and compares them in
+# the following ways: it should display a list of all the unique qwords contained
+# in both files, it should display a list of the words that appear in both files,
+# it should display a list of the words that appear in the first file but not the
+# second, it should display a list of words that appear in the second file but not
+# the first, it should display a list of words that appear in either the first or
+# second file but not both.
+
+words_set1 = set()
+words_set2 = set()
+
+infile1 = open('text.txt', 'r')
+infile2 = open('WorldSeriesWinners.txt', 'r')
+
+# For loop that removes the newline character and punctuation from each line, then splits the words
+# based on spaces and adds the words to the words_set set. Same logic for the second file too.
+for line in infile1:
+    line = line.rstrip('\n')
+    new_line = ''
+    discard = ''
+    for ch in line:
+        if ch == '.' or ch == '?' or ch == '!' or ch == '"' or ch == ',':
+            discard += ch
+        else:
+            new_line += ch.lower()
+    line_list1 = new_line.split(' ')
+    words_set1.update(tuple(line_list1))
+
+for line in infile2:
+    line = line.rstrip('\n')
+    new_line = ''
+    discard = ''
+    for ch in line:
+        if ch == '.' or ch == '?' or ch == '!' or ch == '"' or ch == ',':
+            discard += ch
+        else:
+            new_line += ch.lower()
+    line_list2 = new_line.split(' ')
+    words_set2.update(tuple(line_list2))
+  
+print()
+print('Unique Words in the first file:')
+print(words_set1)
+print()
+print('Uniwue Words in the second file:')
+print(words_set2)
+
+# Intersection of both files
+print()
+words_set3 = words_set1 & words_set2 
+print('Words that appear in both files:')
+print(words_set3)
+
+# Difference of the first file and the second file
+print()
+words_set4 = words_set1 - words_set2
+print('Words that appear in the first file but not the second:')
+print(words_set4)
+
+# Difference of the second file and the first file
+print()
+words_set5 = words_set2 - words_set1
+print('Words that appear in the second file but not the first:')
+print(words_set5)
+
+# Symmetric difference of the two files
+print()
+words_set6 = words_set1 ^ words_set2
+print('Words that appear in either files but not both:')
+print(words_set6)
+
+infile1.close()
+infile2.close()

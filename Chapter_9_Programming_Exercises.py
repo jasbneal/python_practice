@@ -341,3 +341,50 @@ print(words_set6)
 
 infile1.close()
 infile2.close()
+
+# 16 February 2021
+# Starting Out With Python Programming Exercise 7
+# Write a program that reads the WorldSeriesWinners.txt file and creates a 
+# dictionary in which the keys are the names of the teams and each key's
+# associated value is the number of times the team has won the World Series.
+# The program should also create a dictionary in which the keys are the year
+# and each key's associated value is the name of the team that won that year.
+# The program should prompt the user for a year in the range of 1903 and 2008.
+# It should then display the name of the team that won the World Series that
+# year and the number of times that team has won the World Series. 
+
+WorldSeriesWinnersCount_dct = {}
+WorldSeriesWinnersYears_dct = {}
+
+infile = open('WorldSeriesWinners.txt', 'r')
+
+starting_year = 1903
+
+# For each line (team) in the file, if it's in the WSWC_dct, +1 to value. If it's not,
+# adds it. Using starting_year accumulator, adds staring year and line (team) to WSWY_dct,
+# skipping years 1904 and 1994.
+for line in infile:
+    line = line.rstrip('\n')
+    if line in WorldSeriesWinnersCount_dct:
+        WorldSeriesWinnersCount_dct[line] += 1
+    else:
+        WorldSeriesWinnersCount_dct[line] = 1
+    if starting_year == 1904 or starting_year == 1994:
+        starting_year += 1
+        WorldSeriesWinnersYears_dct[starting_year] = line
+    else:
+        WorldSeriesWinnersYears_dct[starting_year] = line
+    starting_year += 1
+
+
+year = int(input('Enter a year in the range of 1903 and 2008: '))
+
+if year in WorldSeriesWinnersYears_dct:
+    winner = WorldSeriesWinnersYears_dct.get(year)
+    print('The winner of the World Series in', year, 'was the', winner)
+    print('The', winner, 'won', WorldSeriesWinnersCount_dct[winner], 'time(s) between 1903 and 2008.')
+else:
+    year = print('ERROR: You have entered an invalid year.')
+
+infile.close()
+

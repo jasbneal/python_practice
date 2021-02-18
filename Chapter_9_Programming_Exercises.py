@@ -468,3 +468,91 @@ finally:
   output_file = open('email_contacts.dat', 'wb')
   pickle.dump(email_contacts_dct, output_file)
   output_file.close()
+
+# 18 February 2021
+# Starting Out With Python Programming Exercise 9 (No Functions)
+# Create a simplified version of the game of Blackjack between two
+# virtual players. The cards have the following values: numeric cards are
+# assigned the value they have printed on them; jack, queens and kings are
+# valued at 10, aces are valued at 1 or 11 depending on the player's choice.
+# The program should deal cards to each player until one player's hand is worth
+# more than 21 points. When that happens, the other player is the winner. (It
+# is possible that both players' hands will simultaneously exceed 21 points, in
+# which case neither player wins.) The program should repeat until all cards have
+# been dealt from the deck. If a player is delt an ace, the program should decide
+# the value of the card according to the following rule: The ace will be worth 
+# 11 points, unless that player's hand exceed 21 points. In that case, the ace
+# will be worth 1 point.
+
+import random
+
+deck_dct = {'Ace of Spades':11, '2 of Spades':2, '3 of Spades': 3, '4 of Spades':4,
+            '5 of Spades':5, '6 of Spades':6, '7 of Spades':7, '8 of Spades':8,
+            '9 of Spades':9, '10 of Spades':10, 'Jack of Spades':10, 'Queen of Spades':10,
+            'King of Spades':10,
+            
+            'Ace of Hearts':11, '2 of Hearts':2, '3 of Hearts': 3, '4 of Hearts':4,
+            '5 of Hearts':5, '6 of Hearts':6, '7 of Hearts':7, '8 of Hearts':8,
+            '9 of Hearts':9, '10 of Hearts':10, 'Jack of Hearts':10, 'Queen of Hearts':10,
+            'King of Hearts':10,
+            
+            'Ace of Clubs':11, '2 of Clubs':2, '3 of Clubs': 3, '4 of Clubs':4,
+            '5 of Clubs':5, '6 of Clubs':6, '7 of Clubs':7, '8 of Clubs':8,
+            '9 of Clubs':9, '10 of Clubs':10, 'Jack of Clubs':10, 'Queen of Clubs':10,
+            'King of Clubs':10,
+            
+            'Ace of Diamonds':11, '2 of Diamonds':2, '3 of Diamonds': 3, '4 of Diamonds':4,
+            '5 of Diamonds':5, '6 of Diamonds':6, '7 of Diamonds':7, '8 of Diamonds':8,
+            '9 of Diamonds':9, '10 of Diamonds':10, 'Jack of Diamonds':10,
+            'Queen of Diamonds':10, 'King of Diamonds':10,}
+
+p1_total = 0
+p2_total = 0
+
+p1_wins = 0
+p2_wins = 0
+
+# Loop of picking cards, adding values and determining a winner continues until the deck doesn't have any cards left.
+while len(deck_dct) > 0:
+
+  # Selects a random card from the deck. If it's an ace and the total > 21, +1 to total. Otherwise add value of card to total.
+  p1_pick = random.choice(list(deck_dct.items()))
+  score1 = p1_pick[1]
+  if p1_pick[0] == 'Ace of Spades' or p1_pick[0] == 'Ace of Hearts' or p1_pick[0] == 'Ace of Clubs' or p1_pick[0] == 'Ace of Diamonds':
+    if p1_total + score1 > 21:
+      p1_total += 1
+    else:
+      p1_total += score1
+  else:
+    p1_total += score1
+  del deck_dct[p1_pick[0]]
+
+  # Selects a random card from the deck. If it's an ace and the total > 21, +1 to total. Otherwise add value of card to total.
+  p2_pick = random.choice(list(deck_dct.items()))
+  score2 = p2_pick[1]
+  if p2_pick[0] == 'Ace of Spades' or p1_pick[0] == 'Ace of Hearts' or p1_pick[0] == 'Ace of Clubs' or p1_pick[0] == 'Ace of Diamonds':
+    if p2_total + score2 > 21:
+      p2_total += 1
+    else:
+      p2_total += score2
+  else:
+    p2_total += score2
+  del deck_dct[p2_pick[0]]
+
+  # If one hand is > 21, declares a winner and resets the hand totals.
+  if p1_total > 21 and p2_total <= 21:
+    p2_wins += 1
+    p1_total = 0
+    p2_total = 0
+  elif p2_total > 21 and p1_total <= 21:
+    p1_wins += 1
+    p1_total = 0
+    p2_total = 0
+  elif p2_total > 21 and p1_total > 21:
+    p1_wins += 0
+    p2_wins += 0
+    p1_total = 0
+    p2_total = 0
+
+print('Player 1 Wins:', p1_wins)
+print('Player 2 Wins:', p2_wins)

@@ -388,3 +388,83 @@ else:
 
 infile.close()
 
+# 17 February 2021
+# Starting Out With Python Programming Exercise 8
+# Write a program that keeps names and email addresses in a dictionary as key-value
+# pairs. The program should display the menu that lets the user look up a person's
+# email address, add a new name and email address, change an existing email address,
+# and delete an existing name and email address. The program should pickle the dictionary
+# and save it to a file when the user exists the program. Each time the program starts,
+# it should retrieve the dictionary from the file and unpickle it.
+
+import pickle
+
+# MENU
+ADD_CONTACT = 1
+LOOK_UP_CONTACT = 2
+CHANGE_EMAIL = 3
+DELETE_CONTACT = 4
+QUIT = 5
+
+# Attempts to open the email_contacts.dat file. If it doesn't exist/not found, 
+# creates an empty dictionary.
+try: 
+  input_file = open('email_contacts.dat', 'rb')
+  email_contacts_dct = pickle.load(input_file)
+  input_file.close()
+  print(email_contacts_dct)
+except FileNotFoundError:
+  email_contacts_dct = {}
+finally:
+  choice = 0
+
+  while choice != QUIT:
+      print()
+      print('MENU:')
+      print('------------------------------------')
+      print('Add a contact = 1')
+      print('Search for a contact = 2')
+      print('Change an existing email address = 3')
+      print('Delete a contact = 4')
+      print('Quit = 5')
+        
+      choice = int(input('Choose an option from the above menu: '))
+        
+      while choice < ADD_CONTACT or choice > QUIT:
+        choice = int(input('Enter a valid choice: '))
+
+      # Add a contact
+      if choice == ADD_CONTACT:
+        name = input("Enter the first and last name of the contact you'd like to add: ")
+        email = input("Enter the email address of the contact: ")
+        if name not in email_contacts_dct:
+          email_contacts_dct[name] = email
+        else:
+          print('That contact already exists in the dictionary.')
+
+      # Look-up a contact        
+      if choice == LOOK_UP_CONTACT:
+        name = input("Enter the name of the contact you'd to look-up: ")
+        print(email_contacts_dct.get(name, 'Contact not found.'))
+    
+      #Change the email of an existing contact  
+      if choice == CHANGE_EMAIL:
+        name = input("Enter the name of the contact you'd like to update: ")
+        if name in email_contacts_dct:
+          email = input('Enter the new email address for this contact: ')
+          email_contacts_dct[name] = email
+        else:
+          print("This contact doesn't exist in the dictionary.")
+
+      # Delete a contact  
+      if choice == DELETE_CONTACT:
+        name = input("Enter the name of the contact you'd like to delete: ")
+        if name in email_contacts_dct:
+          del email_contacts_dct[name]
+        else:
+          print("This contact doesn't exist in the dictionary.")
+
+  # Pickles and dumps the email_contacts_dct into the email_contacts.dat file   
+  output_file = open('email_contacts.dat', 'wb')
+  pickle.dump(email_contacts_dct, output_file)
+  output_file.close()

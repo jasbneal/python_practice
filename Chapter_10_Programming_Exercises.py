@@ -159,3 +159,276 @@ print('-----------')
 for i in range(5):
     Tesla.brake()
     print('Speed:', Tesla.get_speed())
+
+# 23 February 2021
+# Starting Out With Python Programming Exercise 3
+# Design a class that holds the following personal data: name, address, age, and
+# phone number. Write appropriate accessor and mutator methods. Also, write a program
+# that creates three instances of the class. One instance should hold your information,
+# and the other two should hold your friends' or family members' information.
+
+class Perso_Info:
+# Class that holds the name, address, age and phone number of a person.
+
+    def __init__(self, name, address, age, phone_number):
+        self.__name = name
+        self.__address = address
+        self.__age = age
+        self.__phone_number = phone_number
+
+    def set_name(self, name):
+        self.__name = name
+    
+    def set_address(self, address):
+        self.__address = address
+    
+    def set_age(self, age):
+        self.__age = age
+    
+    def set_phone_number(self, phone_number):
+        self.__phone_number = phone_number
+
+    def get_name(self):
+        return self.__name
+    
+    def get_address(self):
+        return self.__address
+    
+    def get_age(self):
+        return self.__age
+
+    def get_phone_number(self):
+        return self.__phone_number
+    
+    def __str__(self):
+        return 'Name: ' + self.__name + \
+            '\nAddress: ' + self.__address + \
+            '\nAge: ' + str(self.__age) + \
+            '\nPhone Number: ' + str(self.__phone_number)
+
+# Gathers the information of the user and creates an instance from the Perso_Info class.
+name = input('Enter your first and last name: ')
+address = input('Enter your address (street, city, state, zip code): ')
+age = int(input('Enter your age: '))
+phone_number = int(input('Enter your phone number (no spaces, parentheses or dashes): '))
+
+my_info = Perso_Info(name, address, age, phone_number)
+
+print()
+print('Your Information:')
+print(my_info)
+print()
+
+# Gathers the user's best friend's information and creates an instance of the 
+# Perso_Info class.
+name = input("Enter your best friend's first and last name: ")
+address = input("Enter your best friend's address: ")
+age = int(input("Enter your best friend's age: "))
+phone_number = int(input("Enter your best friend's phone number (no spaces, parentheses or dashes): "))
+
+best_friend = Perso_Info(name, address, age, phone_number)
+
+print()
+print("Your Best Friend's Information:")
+print(best_friend)
+print()
+
+# Gathers the user's mother's information and creates an instance of the Perso_Info class.
+name = input("Enter your mother's first and last name: ")
+address = input("Enter your mother's address: ")
+age = int(input("Enter your mother's age: "))
+phone_number = int(input("Enter your mother's phone number (no spaces, parentheses or dashes): "))
+
+mother = Perso_Info(name, address, age, phone_number)
+
+print()
+print("You Mother's Information:")
+print(mother)
+
+# 25 February 2021
+# Starting Out With Python Programming Exercise 4 (User Input & Functions Version)
+# Write a class named Employee that holds the following data about an employee in 
+# attributes: name, ID number, department, and job title. Once you have written the 
+# class, write a program that creates three Employee objects to hold the following data:
+
+# Name               ID Number          Department          Job Title
+# Susan Meyer        47899              Accounting          Vice President
+# Mark Jones         39119              IT                  Programmer
+# Joy Rogers         81774              Manufacturing       Engineer
+
+# The program should store this data in three objects and then display the data for each
+# employee on the screen. 
+
+class Employee:
+# Employee class that stores the name, ID number, department and job title data attributes.
+
+    def __init__(self, name, ID_number, dept, title):
+        self.__name = name
+        self.__ID_number = ID_number
+        self.__dept = dept
+        self.__title = title
+    
+    def set_name(self, name):
+        self.__name = name
+
+    def set_ID_number(self, ID_number):
+        self.__ID_number = ID_number
+
+    def set_dept(self, dept):
+        self.__dept = dept
+    
+    def set_title(self, title):
+        self.__title = title
+
+    def get_name(self):
+        return self.__name
+    
+    def get_ID_number(self):
+        return self.__ID_number
+
+    def get_dept(self):
+        return self.__dept
+
+    def get_title(self):
+        return self.__title
+
+    def __str__(self):
+        return 'Employee Name: ' + self.__name + \
+        '\nEmployee ID Number: ' + str(self.__ID_number) + \
+        '\nEmployee Dept: ' + self.__dept + \
+        '\nEmployee Title: ' + self.__title
+
+def main():
+# Gets the input for three different employees and creates three different instances of
+# the Employee class.    
+
+    name = get_employee_name()
+    ID_number = get_employee_ID()
+    dept = get_employee_dept()
+    title = get_employee_job_title()
+    
+    employee_1 = Employee(name, ID_number, dept, title)
+    print()
+    print(employee_1)
+    print()
+
+    name = get_employee_name()
+    ID_number = get_employee_ID()
+    dept = get_employee_dept()
+    title = get_employee_job_title()
+    
+    employee_2 = Employee(name, ID_number, dept, title)
+    print()
+    print(employee_2)
+    print()
+
+    name = get_employee_name()
+    ID_number = get_employee_ID()
+    dept = get_employee_dept()
+    title = get_employee_job_title()
+    
+    employee_3 = Employee(name, ID_number, dept, title)
+    print()
+    print(employee_3)
+    
+def get_employee_name():
+    name = input("Enter the employee's first and last name: ")
+    return name 
+
+def get_employee_ID():
+    ID_number = int(input("Enter the employee's ID number: "))
+    return ID_number
+
+def get_employee_dept():
+    dept = input("Enter the employee's department: ")
+    return dept
+
+def get_employee_job_title():
+    title = input("Enter the employee's job title: ")
+    return title
+
+main()
+
+# 25 February 2021
+# Starting Out With Python Programming Exercise 4 (Info Pre-Entered Version)
+# Write a class named Employee that holds the following data about an employee in 
+# attributes: name, ID number, department, and job title. Once you have written the 
+# class, write a program that creates three Employee objects to hold the following data:
+
+# Name               ID Number          Department          Job Title
+# Susan Meyer        47899              Accounting          Vice President
+# Mark Jones         39119              IT                  Programmer
+# Joy Rogers         81774              Manufacturing       Engineer
+
+# The program should store this data in three objects and then display the data for each
+# employee on the screen. 
+
+class Employee:
+# Employee class that stores the name, ID number, department and job title data attributes.
+
+    def __init__(self, name, ID_number, dept, title):
+        self.__name = name
+        self.__ID_number = ID_number
+        self.__dept = dept
+        self.__title = title
+    
+    def set_name(self, name):
+        self.__name = name
+
+    def set_ID_number(self, ID_number):
+        self.__ID_number = ID_number
+
+    def set_dept(self, dept):
+        self.__dept = dept
+    
+    def set_title(self, title):
+        self.__title = title
+
+    def get_name(self):
+        return self.__name
+    
+    def get_ID_number(self):
+        return self.__ID_number
+
+    def get_dept(self):
+        return self.__dept
+
+    def get_title(self):
+        return self.__title
+
+    def __str__(self):
+        return 'Employee Name: ' + self.__name + \
+        '\nEmployee ID Number: ' + str(self.__ID_number) + \
+        '\nEmployee Dept: ' + self.__dept + \
+        '\nEmployee Title: ' + self.__title
+
+
+# Creates three Employee objects identifiable by employee ID_number and without any input by the user.    
+
+name = 'Susan Meyers'
+ID_number = 47899
+dept = 'Accounting'
+title = 'Vice President'
+
+employee_47899 = Employee(name, ID_number, dept, title)
+print()
+print(employee_1)
+print()
+
+name = 'Mark Jones'
+ID_number = 39119
+dept = 'IT'
+title = 'Programmer'
+
+employee_39119 = Employee(name, ID_number, dept, title)
+print(employee_2)
+print()
+
+name = 'Joy Rogers'
+ID_number = 81774
+dept = 'Manufacturing'
+title = 'Engineer'
+
+employee_81774 = Employee(name, ID_number, dept, title)
+print(employee_3)
+print()

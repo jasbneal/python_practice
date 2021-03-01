@@ -245,7 +245,7 @@ print()
 print("You Mother's Information:")
 print(mother)
 
-# 25 February 2021
+# 24 February 2021
 # Starting Out With Python Programming Exercise 4 (User Input & Functions Version)
 # Write a class named Employee that holds the following data about an employee in 
 # attributes: name, ID number, department, and job title. Once you have written the 
@@ -349,7 +349,7 @@ def get_employee_job_title():
 
 main()
 
-# 25 February 2021
+# 24 February 2021
 # Starting Out With Python Programming Exercise 4 (Info Pre-Entered Version)
 # Write a class named Employee that holds the following data about an employee in 
 # attributes: name, ID number, department, and job title. Once you have written the 
@@ -432,3 +432,300 @@ title = 'Engineer'
 employee_81774 = Employee(name, ID_number, dept, title)
 print(employee_3)
 print()
+
+# 25 February 2021
+# Starting Out With Python Programming Exercise 5 (Info Pre-Entered Version)
+# Write a class named RetailItem that holds data about an item in a retail store.
+# The class should store the following data in attributes: item, description, units
+# in inventory, and price. Once you have written the class, write a program that 
+# creates three RetailItem objects and stores the following data in them:
+
+#                   Description         Units in Inventory              Price
+#   Item #1         Jacket                      12                      $59.95
+#   Item #2         Designer Jeans              40                      $34.95
+#   Item #3         Shirt                       20                      $24.95
+
+class RetailItem():
+# Class that stores a retail item's number, description, number of units in 
+# inventory and price.
+
+    def __init__(self, item, descr, units, price):
+        self.__item = item
+        self.__descr = descr 
+        self.__units = units 
+        self.__price = price 
+
+    def set_item(self, item):
+        self.__item = item
+
+    def set_descr(self, descr):
+        self.__descr = descr
+    
+    def set_units(self, units):
+        self.__units = units
+
+    def set_price(self, price):
+        self.__price = price
+    
+    def get_item(self):
+        return self.__item
+
+    def get_descr(self):
+        return self.__descr
+
+    def get_units(self):
+        return self.__units
+
+    def get_price(self):
+        return self.__price
+
+    def __str__(self):
+        return 'Item ' + str(self.__item) + ':' + \
+        '\nDescription: ' + self.__descr + \
+        '\nUnits: ' + str(self.__units) + \
+        '\nPrice: $' + str(self.__price)
+
+# Creates three objects that store the given item number, description, units and price.
+item = 1 
+descr = 'Jacket'
+units = 12
+price = 59.95
+
+item_1 = RetailItem(item, descr, units, price)
+
+item = 2
+descr = 'Designer Jeans'
+units = 40
+price = 34.95
+
+item_2 = RetailItem(item, descr, units, price)
+
+item = 3
+descr = 'Shirt'
+units = 20
+price = 24.95
+
+item_3 = RetailItem(item, descr, units, price)
+
+# 25 February 2021
+# Starting Out With Python Programming Exercise 5 (Info Pre-Entered Version)
+# Write a class named RetailItem that holds data about an item in a retail store.
+# The class should store the following data in attributes: item, description, units
+# in inventory, and price. Once you have written the class, write a program that 
+# creates three RetailItem objects and stores the following data in them:
+
+#                   Description         Units in Inventory              Price
+#   Item #1         Jacket                      12                      $59.95
+#   Item #2         Designer Jeans              40                      $34.95
+#   Item #3         Shirt                       20                      $24.95
+
+class RetailItem():
+# Class that stores a retail item's number, description, number of units in 
+# inventory and price.
+
+    def __init__(self, item, descr, units, price):
+        self.__item = item
+        self.__descr = descr 
+        self.__units = units 
+        self.__price = price 
+
+    def set_item(self, item):
+        self.__item = item
+
+    def set_descr(self, descr):
+        self.__descr = descr
+    
+    def set_units(self, units):
+        self.__units = units
+
+    def set_price(self, price):
+        self.__price = price
+    
+    def get_item(self):
+        return self.__item
+
+    def get_descr(self):
+        return self.__descr
+
+    def get_units(self):
+        return self.__units
+
+    def get_price(self):
+        return self.__price
+
+    def __str__(self):
+        return 'Item ' + str(self.__item) + ':' + \
+        '\nDescription: ' + self.__descr + \
+        '\nUnits: ' + str(self.__units) + \
+        '\nPrice: $' + str(self.__price)
+
+# Creates three objects that store the given item number, description, units and price by 
+# calling the name, descr, inv_units and price functions.
+
+def main():
+    item = create_item()
+    descr = create_descr()
+    units = create_inv_units()
+    price = create_price()
+    item_1 = RetailItem(item, descr, units, price)
+
+    item = create_item()
+    descr = create_descr()
+    units = create_inv_units()
+    price = create_price()
+    item_2 = RetailItem(item, descr, units, price)
+
+    item = create_item()
+    descr = create_descr()
+    units = create_inv_units()
+    price = create_price()
+    item_3 = RetailItem(item, descr, units, price)
+
+def create_item():
+    item = int(input('Enter the item number: '))
+    return item
+
+def create_descr():
+    descr = input("Enter the item's description: ")
+    return descr
+
+def create_inv_units():
+    units = int(input("Enter the amount of units on hand of this item: "))
+    return units
+
+def create_price():
+    price = float(input('Enter the price of the item: '))
+    return price
+
+main()
+
+# 25-28 February 2021
+# Starting Out With Python Programming Exercise 6
+# Create a program that stores Employee objects in a dictionary. Use the employee
+# ID number as the key. The program should present a menu that lets the user perform
+# the following: look up an employee in the dictionary, add a new employee to the 
+# dictionary, change an existing employee's name, department, and job title in the
+# dictionary, delete an employee from the dictionary, quit the program.
+# When the program ends, it should pickle the dictionary and save it to a file. Each
+# time the program starts, it should try to load the pickled dictionary from the file.
+# If the file does not exist, the program should start with an empty dictionary.
+
+# Come back to the import pickle/load dictionary contents, in the process of making functions for the
+# menu options. Look up how to add objects as values to menus, does there need to be another choice
+# input by the user at the end of the while loop or does it automatically repeat? 
+
+import Employee_Class
+import pickle
+
+# MENU
+LOOK_UP = 1
+ADD_NEW_EMPLOYEE = 2
+CHANGE_EXISTING_EMPLOYEE_INFO = 3
+DELETE_EMPLOYEE = 4
+QUIT = 5
+
+def main():
+# Opens the pickled employee_directory.dat file, unpickles its contents and saves it to employee_dct.
+# If the file doesn't exist, a new employee_dct dictionary is created. 
+# Loop allows the user to select their desired option as long the option != quit.
+    try:
+        input_file = open('employee_directory.dat', 'rb')
+        employee_dct = pickle.load(input_file)
+        input_file.close()
+    except FileNotFoundError:
+        employee_dct = {}
+    finally:
+        choice = 0
+        print(employee_dct)
+
+        while choice != 5:
+            print()
+            print('MENU')
+            print('------------------')
+            print('Look up an employee in the directory: 1')
+            print('Add a new employee to the directory: 2')
+            print("Change an existing employee's information: 3")
+            print('Delete an employee from the directory: 4')
+            print('Quit: 5')
+
+            choice = int(input("Enter the action you'd like to make: "))
+
+            if choice < 1 or choice > 5:
+                print("You've entered an invalid selection.")
+                choice = int(input("Enter a valid selection: "))
+
+            if choice == 1:
+                look_up_emp(employee_dct)
+
+            if choice == 2:
+                add_new_employee(employee_dct)
+
+            if choice == 3:
+                change_employee_info(employee_dct)
+
+            if choice == 4:
+                delete_employee(employee_dct)
+
+        print(employee_dct)
+
+    output_file = open('employee_directory.dat', 'wb')
+    pickle.dump(employee_dct, output_file)
+    output_file.close()
+    
+def look_up_emp(dct):
+# Function: Look-up employee info by ID number & ValueError exception handled. 
+    try: 
+        ID_number = int(input("Enter the employee's ID number: "))
+    except ValueError:
+        print('You must only enter numbers to represent the employee ID.')
+        ID_number = int(input("Enter the employee's ID number: "))
+    if ID_number in dct:
+        print(dct[ID_number])
+    else:
+        print('The employee ID number cannot be found.')
+
+def add_new_employee(dct):
+# Function: Add new employee & ValueError exception handled.
+    try: 
+        ID_number = int(input("Enter the employee's ID number: "))
+    except ValueError:
+        print('You must only enter numbers to represent the employee ID.')
+        ID_number = int(input("Enter the employee's ID number: ")) 
+    if ID_number not in dct:
+        name = input("Enter the employee's name: ")
+        dept = input("Enter the employee's department: ")
+        title = input("Enter the employee's job title: ")
+        emp_ID = Employee_Class.Employee(name, ID_number, dept, title)
+        dct[ID_number] = emp_ID
+    else:
+        print('This employee already exists within the directory.')
+
+def change_employee_info(dct):
+# Function: Change employee info (name, dept, title) & ValueError exception handled.
+    try: 
+        ID_number = int(input("Enter the employee's ID number: "))
+    except ValueError:
+        print('You must only enter numbers to represent the employee ID.')
+        ID_number = int(input("Enter the employee's ID number: "))
+    if ID_number in dct:
+        name = input("Update the employee's name: ")
+        dept = input("Update the employee's department: ")
+        title = input("Update the employee's job title: ")
+        emp_ID = Employee_Class.Employee(name, ID_number, dept, title)
+        dct[ID_number] = emp_ID
+
+def delete_employee(dct):
+# Function: Delete an eployee via the ID number & ValueError exception handled.
+    try: 
+        ID_number = int(input("Enter the employee's ID number: "))
+    except ValueError:
+        print('You must only enter numbers to represent the employee ID.')
+        ID_number = int(input("Enter the employee's ID number: "))
+    if ID_number in dct:
+        del dct[ID_number]
+        print("This employee's information has been deleted from the directory.")
+    else:
+        print('This employee is not in the directory') 
+
+main()
+

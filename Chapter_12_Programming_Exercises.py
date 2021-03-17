@@ -122,3 +122,26 @@ def add_list_items(list):
 
 print("The total of the items in the list is ", end='')
 add_list_items(list1)
+
+# 17 March 2021
+# Design a function that accepts an integer argument and returns the sum of all
+# the integers from 1 up to the number passed as an argument. For examplie, if
+# 50 is passed as an argument, the function will return the sum of 1, 2, 3, 4, ... 50.
+# use recursion to calculate the sum.
+
+try:
+    n = int(input("Enter any whole number: "))
+except ValueError:
+    print("ERROR: You must enter a whole number. Try again.")
+    n = int(input("Enter any whole number: "))
+
+def sum_of_nums(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return n + sum_of_nums(n-1)
+
+ans = sum_of_nums(n)
+print("The sum of the numbers from 1 up to", n, "is", ans)

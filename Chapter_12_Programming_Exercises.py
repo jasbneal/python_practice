@@ -124,6 +124,7 @@ print("The total of the items in the list is ", end='')
 add_list_items(list1)
 
 # 17 March 2021
+# Starting Out With Python Exercise #6
 # Design a function that accepts an integer argument and returns the sum of all
 # the integers from 1 up to the number passed as an argument. For examplie, if
 # 50 is passed as an argument, the function will return the sum of 1, 2, 3, 4, ... 50.
@@ -145,3 +146,54 @@ def sum_of_nums(n):
 
 ans = sum_of_nums(n)
 print("The sum of the numbers from 1 up to", n, "is", ans)
+
+# 17 March 2021
+# Starting Out With Python Exercise #7
+# Design a function that uses recursion to raise a number to a power. 
+# The function should accept two arguments: the number to be raised and
+# the exponent. Assume that the exponent is a nonnegative integer.
+
+try:
+    num = int(input("Enter any number: "))
+    exp = int(input("Enter any nonegative integer. This will serve as the exponent of number you just entered: "))
+except ValueError:
+    print("ERROR: You must enter a number.")
+    num = int(input("Enter any number: "))
+    exp = int(input("Enter any nonegative integer. This will serve as the exponent of number you just entered: "))
+
+def num_to_power(num, exp):
+    if exp == 0:
+        return num
+    elif exp == 1:
+        return num
+    elif exp > 1:
+        return num * num_to_power(num, exp - 1)
+
+ans = num_to_power(num, exp)
+
+print(num, "to the", end='')
+print(" ", exp, "th power", sep='', end='')
+print(" equals", format(ans, ',.2f'))
+
+# 17 March 2021
+# Starting Out With Python Exercise #8
+# Ackermann's Function is a recursive mathematical algorithm that can be used to test
+# how sell a system optimizes its performance of recursion. Design a function
+# ackermann(m, n), which solves Ackermann's function. Use the following logic in 
+# your function:
+# If m = 0 then return n + 1
+# If n = 0 then return ackermann(m - 1, 1)
+# Otherwise, return ackermann(m - 1, ackermann(m, n -1))
+
+m = 3
+n = 4
+
+def ackermann(m, n):
+    if m == 0:
+        return n + 1
+    elif n == 0:
+        return ackermann(m - 1, 1)
+    else:
+        return ackermann(m - 1, ackermann(m, n - 1))
+
+print(ackermann(m, n))

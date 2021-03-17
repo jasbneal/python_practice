@@ -63,3 +63,33 @@ def asterisks(n):
         print('*' * n)
 
 asterisks(n)
+
+# 17 March 2021
+# Starting Out With Python Exercise #4
+# Design a function that accepts a list as an argument and returns the largest value
+# in the list. The function should use recursion to find the largest item.
+
+list1 = []
+
+keep_going = 'y'
+
+while keep_going.lower() == 'y':
+    num = float(input("Enter a item to add to the list: "))
+    list1.append(num)
+    keep_going = input("Would you like to keep going? Enter y for yes and n for no: ")
+
+def largest_item(list):
+    n = len(list)
+    if n == 0:
+        print('The list is empty.')
+    elif n == 1:
+        print(format(list[0], ',.2f'))
+    elif n > 1:
+        if list[n-1] > list[n-2]:
+            del list[n-2]
+        else:
+            del list[n-1]
+        largest_item(list)
+
+print("The largest item in the list is ", end='')
+largest_item(list1)

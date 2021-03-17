@@ -93,3 +93,32 @@ def largest_item(list):
 
 print("The largest item in the list is ", end='')
 largest_item(list1)
+
+# 17 March 2021
+# Starting Out With Python Exercise #5
+# Design a function that accepts a list of numbers as an argument. The function
+# should recursively calculate the sum of all the numbers in the list and
+# return that value.
+
+list1 = []
+
+keep_going = 'y'
+
+while keep_going.lower() == 'y':
+    num = float(input("Enter a item to add to the list: "))
+    list1.append(num)
+    keep_going = input("Would you like to keep going? Enter y for yes and n for no: ")
+
+def add_list_items(list):
+    n = len(list)
+    if n == 0:
+        print('The list is empty.')
+    elif n == 1:
+        print(format(list[0], ',.2f'))
+    elif n > 1:
+        list[-1] = list[-1] + list[-2]
+        del list[-2]
+        add_list_items(list)
+
+print("The total of the items in the list is ", end='')
+add_list_items(list1)

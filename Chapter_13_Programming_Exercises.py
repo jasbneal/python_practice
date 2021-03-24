@@ -214,6 +214,9 @@ class FarenheitToCelsius:
 
     def __init__(self):
 
+        # The top frame allows the user to enter a temperature in Celsius,
+        # the middle frame displays the temperature converted to Farenhet,
+        # and the bottom frame has the calculate and quit buttons.
         self.main_window = tkinter.Tk()
         self.top_frame = tkinter.Frame(self.main_window)
         self.middle_frame = tkinter.Frame(self.main_window)
@@ -226,6 +229,7 @@ class FarenheitToCelsius:
         self.celsius_label.pack(side='left')
         self.celsius_entry.pack(side='left')
 
+        # Create the StringVar obj to be associated with the faren_show label.
         self.faren_var = tkinter.StringVar()
         self.faren_label = tkinter.Label(self.middle_frame, \
             text='Temperature Converted to Farenheit:')
@@ -250,8 +254,219 @@ class FarenheitToCelsius:
         tkinter.mainloop()
 
     def calc_faren_temp(self):
+        # Gets the user's input, converts it to a Farenheit temperature and passes the ans
+        # as an arg to the StringVar obj's set method (faren_var)
         celsius = float(self.celsius_entry.get())
         faren = ((9/5) * celsius) + 32
         self.faren_var.set(format(faren, ',.1f'))
 
 faren_celsius_gui = FarenheitToCelsius()
+
+# 23 March 2021
+# Starting Out With Python Exercise #5
+# A county collects property taxes on the assessment value of property, which is
+# 60 percent of the property's actual value. If an acre of land is valued at 
+# $10,000, its assessment value is $6,000. The property tax is then $0.75 for each
+# $100 of the assessment value. The tax for the acre assessed will be $45.00.
+# Write a GUI program that displays the assessment value and property tax when a 
+# user enters the actual value of the property. 
+
+import tkinter
+
+class PropertyTax:
+
+    def __init__(self):
+        self.main_window = tkinter.Tk()
+
+        # The top frame gets the property value from the user. The mid1 frame displays
+        # the property's assessment value. The mid2 frame displays the property's property
+        # tax and the bottom frame has the calc and quit buttons.
+        self.top_frame = tkinter.Frame(self.main_window)
+        self.mid1_frame = tkinter.Frame(self.main_window)
+        self.mid2_frame = tkinter.Frame(self.main_window)
+        self.bottom_frame = tkinter.Frame(self.main_window)
+
+        self.value_label = tkinter.Label(self.top_frame, \
+            text='Enter the value of the property:')
+        self.value_entry = tkinter.Entry(self.top_frame)
+
+        self.value_label.pack(side='left')
+        self.value_entry.pack(side='left')
+
+        # Create 2 StringVar objs to be associated with the self.assess_output label
+        # and the self.p_tax_output label.
+        self.assess_var = tkinter.StringVar()
+        self.p_tax_var = tkinter.StringVar()
+
+        self.assess_label = tkinter.Label(self.mid1_frame, \
+            text='Assessment Value of the Property:')
+        self.assess_output = tkinter.Label(self.mid1_frame, \
+            textvariable=self.assess_var)
+
+        self.assess_label.pack(side='left')
+        self.assess_output.pack(side='left')
+
+        self.p_tax_label = tkinter.Label(self.mid2_frame, \
+            text='Property Tax:')
+        self.p_tax_output = tkinter.Label(self.mid2_frame, \
+            textvariable=self.p_tax_var)
+
+        self.p_tax_label.pack(side='left')
+        self.p_tax_output.pack(side='left')
+
+        self.calc_button = tkinter.Button(self.bottom_frame, \
+            text='Calculate Assessment Value \nAnd Property Tax', \
+                command=self.calc_assess_p_tax)
+        self.quit_button = tkinter.Button(self.bottom_frame, \
+            text='Quit', command=self.main_window.destroy)
+
+        self.calc_button.pack(side='left')
+        self.quit_button.pack(side='left')
+
+        self.top_frame.pack()
+        self.mid1_frame.pack()
+        self.mid2_frame.pack()
+        self.bottom_frame.pack()
+
+        tkinter.mainloop()
+
+    def calc_assess_p_tax(self):
+        # Gets the property value from the user (via value entry widget). Calculates
+        # the assessment value and passes the ans as an arg to the assess_var's set method.
+        # Calculates the property tax and passes the ans as an arg to the p_tax_var's set
+        # method
+        value = float(self.value_entry.get())
+        assess = .6 * value
+        assess_str = '$' + str(format(assess, ',.2f'))
+        p_tax = (assess / 100) * .75 
+        p_tax_str = '$' + str(format(p_tax, ',.2f'))
+        self.assess_var.set(assess_str)
+        self.p_tax_var.set(p_tax_str)
+
+my_property_gui = PropertyTax()
+
+# 24 March 2021
+# Starting Out With Python Exercise #6
+# Joe's Automotive performs the following routine maintenance services:
+#   Oil Change: $30.00
+#   Lube Job: $20.00
+#   Radiator Flush: $40.00
+#   Transmission Flush: $100.00
+#   Inspection: $35.00
+#   Muffler Replacement: $200.00
+#   Tire Rotation: $20.00
+# Write a GUI program with check buttons that allow the user to selecty any
+# or all of these services. When the user clicks a button the total charges
+# should be displayed.
+
+import tkinter
+
+class MaintenanceServices:
+
+    def __init__(self):
+        self.main_window = tkinter.Tk()
+
+        self.top_frame = tkinter.Frame(self.main_window)
+        self.mid1_frame = tkinter.Frame(self.main_window)
+        self.mid2_frame = tkinter.Frame(self.main_window)
+        self.bottom_frame = tkinter.Frame(self.main_window)
+
+        self.intro_label = tkinter.Label(text='Select the service(s) that you would ' + \
+            'like performed on your car:')
+        
+        self.intro_label.pack()
+
+        # Create 3 IntVar objs to use with the Checkbuttons and set the IntVar objs to 0.
+        self.cb_oil_var = tkinter.IntVar()
+        self.cb_oil_var.set(0)
+        
+        self.cb_lube_var = tkinter.IntVar()
+        self.cb_lube_var.set(0)
+        
+        self.cb_radiator_var = tkinter.IntVar()
+        self.cb_radiator_var.set(0)
+        
+        self.cb_transmission_var = tkinter.IntVar()
+        self.cb_transmission_var.set(0)
+        
+        self.cb_inspection_var = tkinter.IntVar()
+        self.cb_inspection_var.set(0)
+        
+        self.cb_muffler_var = tkinter.IntVar()
+        self.cb_muffler_var.set(0)
+        
+        self.cb_tire_var = tkinter.IntVar()
+        self.cb_tire_var.set(0)
+
+        # Create the Checkbutton widgets in the mid1 frame.
+        self.cb_oil = tkinter.Checkbutton(self.mid1_frame, text='Oil Change: $30.00', \
+            variable=self.cb_oil_var)
+        self.cb_lube = tkinter.Checkbutton(self.mid1_frame, text='Lube Job: $20.00', \
+            variable=self.cb_lube_var)
+        self.cb_radiator = tkinter.Checkbutton(self.mid1_frame, text='Radiator Flush: $40.00', \
+            variable=self.cb_radiator_var)
+        self.cb_transmission = tkinter.Checkbutton(self.mid1_frame, text='Transmission Flush: $100.00', \
+            variable=self.cb_transmission_var)
+        self.cb_inspection = tkinter.Checkbutton(self.mid1_frame, text='Inspection: $35.00', \
+            variable=self.cb_inspection_var)
+        self.cb_muffler = tkinter.Checkbutton(self.mid1_frame, text='Muffler Replacement: $200.00', \
+            variable=self.cb_muffler_var)
+        self.cb_tire = tkinter.Checkbutton(self.mid1_frame, text='Tire Rotation: $20.00', \
+            variable=self.cb_tire_var)
+        
+        self.cb_oil.pack()
+        self.cb_lube.pack()
+        self.cb_radiator.pack()
+        self.cb_transmission.pack()
+        self.cb_inspection.pack()
+        self.cb_muffler.pack()
+        self.cb_tire.pack()
+        
+        self.total_label = tkinter.Label(self.mid2_frame, text='Maintenance Services Total:')
+        # Create a StringVar obj to be associated with the total_show label
+        self.total_var = tkinter.StringVar()
+        self.total_show = tkinter.Label(self.mid2_frame, textvariable=self.total_var)
+
+        self.total_label.pack(side='left')
+        self.total_show.pack(side='left')
+        
+        self.calc_button = tkinter.Button(self.bottom_frame, text='Calculate Total', \
+            command=self.calc_total)
+        self.quit_button = tkinter.Button(self.bottom_frame, text='Quit', \
+            command=self.main_window.destroy)
+
+        self.calc_button.pack(side='left')
+        self.quit_button.pack(side='left')
+
+        self.top_frame.pack()
+        self.mid1_frame.pack()
+        self.mid2_frame.pack()
+        self.bottom_frame.pack()
+
+        tkinter.mainloop()
+
+    def calc_total(self):
+        # Calculates the total of maintenance services based on which Checkbuttons 
+        # are selected. Passes the total as an arg to the StringVar obj's (total_var)
+        # set method.
+        total = 0.0
+        
+        if self.cb_oil_var.get() == 1:
+            total += 30
+        if self.cb_lube_var.get() == 1:
+            total += 20
+        if self.cb_radiator_var.get() == 1:
+            total += 40
+        if self.cb_transmission_var.get() == 1:
+            total += 100
+        if self.cb_inspection_var.get() == 1:
+            total += 35
+        if self.cb_muffler_var.get() == 1:
+            total += 200
+        if self.cb_tire_var.get() == 1:
+            total += 20
+        
+        str_total = '$' + str(format(total, ',.2f'))
+        self.total_var.set(str_total)
+
+joe_maint_gui = MaintenanceServices()

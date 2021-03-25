@@ -470,3 +470,101 @@ class MaintenanceServices:
         self.total_var.set(str_total)
 
 joe_maint_gui = MaintenanceServices()
+
+# 25 March 2021
+# Starting Out With Python Exercise #7
+# A long distance provider charges the following rates for telephone calls:
+#       Rate Category                           Rate per Minute
+#       Daytime (6:00AM through 5:59PM)         $0.07
+#       Evening (6:00PM through 11:59PM)        $0.12
+#       Off-Peak (midnight through 5:59AM)      $0.05
+# Write a GUI applicate that allows the user to select a rate category (from a set
+# of radio buttons), and enter the number of minutes of the call into an Entry widget.
+# An info dialog box should display the charge for the call.
+
+import tkinter
+import tkinter.messagebox
+
+class DistanceCalls:
+
+    def __init__(self):
+
+        self.main_window = tkinter.Tk()
+
+        # The top frame includes the radiobutton widgets (user selects rate type).
+        # The mid frame includes the entry widget to enter the amount of minutes for
+        # the call. # Bottom frame includes the calculate total charges and quit buttons.
+        self.top_frame = tkinter.Frame(self.main_window)
+        self.mid_frame = tkinter.Frame(self.main_window)
+        self.bottom_frame = tkinter.Frame(self.main_window)
+
+        self.descr_label = tkinter.Label(self.top_frame, \
+            text='Select a long distance rate category:')
+
+        # Create an IntVar obj to use with the radio buttons.
+        self.rate_var = tkinter.IntVar()
+        self.rate_var.set(0)
+
+        # Create the radio buttons in the top_frame.
+        self.daytime_rb = tkinter.Radiobutton(self.top_frame, \
+            text='Daytime (6:00AM through 5:59PM):      $0.07', \
+                variable=self.rate_var, value=1)
+        self.evening_rb = tkinter.Radiobutton(self.top_frame, \
+            text='Evening (6:00PM through 11:59PM)      $0.12', \
+                variable=self.rate_var, value=2)
+        self.off_peak_rb = tkinter.Radiobutton(self.top_frame, \
+            text='Off-Peak (midnight through 5:59AM)    $0.05', \
+                variable=self.rate_var, value=3)
+
+        self.descr_label.pack()
+        self.daytime_rb.pack()
+        self.evening_rb.pack()
+        self.off_peak_rb.pack()
+
+        self.minutes_label = tkinter.Label(self.mid_frame, \
+            text='Enter the length of the call (in minutes):')
+        self.minutes_entry = tkinter.Entry(self.mid_frame, width=10)
+
+        self.minutes_label.pack(side='left')
+        self.minutes_entry.pack(side='left')
+
+        self.calc_button = tkinter.Button(self.bottom_frame, \
+            text='Calculate Total Charge', command=self.calc_charge)
+        self.quit_button = tkinter.Button(self.bottom_frame, \
+            text='Quit', command=self.main_window.destroy)
+
+        self.calc_button.pack(side='left')
+        self.quit_button.pack(side='left')
+
+        # Create a StrigVar obj to use with the ans_show label
+        # (display the total charge for the call)
+        self.ans_var = tkinter.StringVar()
+        
+        self.top_frame.pack()
+        self.mid_frame.pack()
+        self.bottom_frame.pack()
+
+        tkinter.mainloop()
+
+    def calc_charge(self):
+        # The calc_charge method is the callback function for the 
+        # Calculate Total Charge button.
+        # Retrieve the value stored in the IntVar obj (rate_var),
+        # determine the radiobutton it's associated with and calculate the total charge.
+        rate_type = self.rate_var.get()
+        minutes = float(self.minutes_entry.get())
+        
+        if rate_type == 1:
+            total = .07 * minutes
+        elif rate_type == 2:
+            total = .12 * minutes
+        elif rate_type == 3:
+            total = .05 * minutes
+        
+        str_total = '$' + str(format(total, ',.2f'))
+        
+        # Total is displayed via an info dialog box.
+        tkinter.messagebox.showinfo('Call Charge ', 'Total Call Charge: ' + \
+            str_total)
+
+distance_call_gui = DistanceCalls()

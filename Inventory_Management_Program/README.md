@@ -10,7 +10,7 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 - Determine the estimated time from order placement to product arrival
 - View the complete list of product components (on-hand amounts and minimum amount needed for a single build)
 
-(Screen_Shot_2021-03-30_at_1.52.47_PM.png)
+!(Screen_Shot_2021-03-30_at_1.52.47_PM.png)
 
 ### How It Works
 

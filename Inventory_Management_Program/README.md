@@ -10,8 +10,6 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 - Determine the estimated time from order placement to product arrival
 - View the complete list of product components (on-hand amounts and minimum amount needed for a single build)
 
-![https://github.com/jasbneal/python_practice/commit/cae2ce5f1c33c2c001f150158be283655cc154b6#diff-412dd96cf36639875bc8586724dee115b88c1ebbcc11e1bf4a09b842f8bea167](Screen_Shot_2021-03-30_at_1.52.47_PM.png)
-
 ### How It Works
 
 1. The Inventory Management Program has seven different modules. The `Main.py` module creates an instance of the `SelectionMenu` class which creates an instance of the tkinter's Tk class as the main window that holds the selection `Radiobutton` widgets Five modules hold the `Toplevel` widgets that are opened after a selection is made  (`AddBuildComponent.py`, `DeleteBuildComponent.py`, `UpdateInv.py`, `BedETA.py`, and `ViewInv.py`). The `InventoryLevels.py` module contains the `InventoryLevels` class that creates a component object with the name, on_hand and min_need attributes. 

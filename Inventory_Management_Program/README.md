@@ -10,7 +10,7 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 - Determine the estimated time from order placement to product arrival
 - View the complete list of product components (on-hand amounts and minimum amount needed for a single build)
 
-![python_practice/Inventory_Management_Program/](Screen_Shot_2021-03-30_at_1.52.47_PM.png)
+![https://github.com/jasbneal/python_practice/commit/cae2ce5f1c33c2c001f150158be283655cc154b6#diff-412dd96cf36639875bc8586724dee115b88c1ebbcc11e1bf4a09b842f8bea167](Screen_Shot_2021-03-30_at_1.52.47_PM.png)
 
 ### How It Works
 

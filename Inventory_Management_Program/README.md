@@ -4,8 +4,8 @@
 
 The Inventory Management Program is a simple GUI program that gives the user a comprehensive way to manage the components needed to build a given product. The main functionalities of the program include:
 
-- Adding a product component's name, on-hand amount and minimum amount needed to build a single product to the system
-- Delete a product component that may no longer be needed from the system
+- Adding a product component's name, on-hand amount and minimum amount needed to build a single product 
+- Delete a product component that may no longer be needed 
 - Update an existing product component's on-hand amount or minimum amount needed to build a single product
 - Determine the estimated time from order placement to product arrival
 - View the complete list of product components (on-hand amounts and minimum amount needed for a single build)

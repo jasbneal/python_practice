@@ -23,6 +23,10 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 
 EXAMPLE: Execution of the Add a Build Component GUI from `Main.py`'s Select button's callback function
 
+<p align="center">
+	<img width="1312" height="348" src=https://github.com/jasbneal/python_practice/blob/main/Inventory_Management_Program/img/Screen%20Shot%202021-03-31%20at%2012.24.31%20PM.png?raw=true>
+</p>
+
 ```python
 self.add_rb = tkinter.Radiobutton(self.middle_frame, \ 
     text='Add a build component', variable=self.select_var, value=1)

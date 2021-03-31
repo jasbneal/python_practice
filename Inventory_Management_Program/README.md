@@ -11,7 +11,7 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 - View the complete list of product components (on-hand amounts and minimum amount needed for a single build)
 
 <p align="center">
-	<img width="764" height="354" src="https://github.com/jasbneal/python_practice/blob/main/Inventory_Management_Program/img/Screen_Shot_2021-03-30_at_1.52.47_PM.png?raw=true">	
+	<img width="382" height="177" src="https://github.com/jasbneal/python_practice/blob/main/Inventory_Management_Program/img/Screen_Shot_2021-03-30_at_1.52.47_PM.png?raw=true">	
 </p>
 
 ### How It Works
@@ -24,7 +24,7 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 EXAMPLE: Execution of the Add a Build Component GUI from `Main.py`'s Select button's callback function
 
 <p align="center">
-	<img width="1312" height="348" src=https://github.com/jasbneal/python_practice/blob/main/Inventory_Management_Program/img/Screen%20Shot%202021-03-31%20at%2012.24.31%20PM.png?raw=true>
+	<img width="656" height="174" src=https://github.com/jasbneal/python_practice/blob/main/Inventory_Management_Program/img/Screen%20Shot%202021-03-31%20at%2012.24.31%20PM.png?raw=true>
 </p>
 
 ```python

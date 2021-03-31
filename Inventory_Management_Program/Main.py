@@ -47,7 +47,7 @@ class SelectionMenu:
         self.update_inv_rb = tkinter.Radiobutton(self.middle_frame, text='Update inventory levels', \
             variable=self.select_var, value=3)
         self.eta_rb = tkinter.Radiobutton(self.middle_frame, text='Determine the estimated time from ' + \
-            'order to bed arrival', variable=self.select_var, value=4)
+            'order to product arrival', variable=self.select_var, value=4)
         self.view_inv_rb = tkinter.Radiobutton(self.middle_frame, text='View current inventory levels', \
             variable=self.select_var, value=5)
 

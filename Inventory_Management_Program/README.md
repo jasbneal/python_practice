@@ -10,17 +10,20 @@ The Inventory Management Program is a simple GUI program that gives the user a c
 - Determine the estimated time from order placement to product arrival
 - View the complete list of product components (on-hand amounts and minimum amount needed for a single build)
 
-![Main.py example] (python_practice/Inventory_Management_Program/img/Screen_Shot_2021-03-30_at_1.52.47_PM.png)
+![Inventory%20Management%20Program%2038c18ef5846e41a3ae04cab69eca420b/Screen_Shot_2021-03-30_at_1.52.47_PM.png](Inventory%20Management%20Program%2038c18ef5846e41a3ae04cab69eca420b/Screen_Shot_2021-03-30_at_1.52.47_PM.png)
 
 ### How It Works
 
 1. The Inventory Management Program has seven different modules. The `Main.py` module creates an instance of the `SelectionMenu` class which creates an instance of the tkinter's Tk class as the main window that holds the selection `Radiobutton` widgets Five modules hold the `Toplevel` widgets that are opened after a selection is made  (`AddBuildComponent.py`, `DeleteBuildComponent.py`, `UpdateInv.py`, `BedETA.py`, and `ViewInv.py`). The `InventoryLevels.py` module contains the `InventoryLevels` class that creates a component object with the name, on_hand and min_need attributes. 
 2. The global `FILE_NAME` variable allows the user to write the name of the file that will hold the inventory data. This variable is passed as an argument for all modules other than the [`Main.py`](http://main.py) module so that the file name only needs to be changed once and it trickles down the system.
 3. When the user selects one of the options in the main window, the action triggers a callback function that creates an instance of a class within the corresponding module of the action. 
-4. When a module's callback function executes, the new `inv_dct` dictionary which contains a product's components, is rewritten to the given file name to reflect the changes made.
+4. When a module's callback function executes, the new `inv_dct` dictionary which contains a product's components data, is rewritten to the given file name to reflect the changes made.
+
+EXAMPLE: Execution of the Add a Build Component GUI from `Main.py`'s Select button's callback function
 
 ```python
-self.add_rb = tkinter.Radiobutton(self.middle_frame, text='Add a build component', variable=self.select_var, value=1)
+self.add_rb = tkinter.Radiobutton(self.middle_frame, \ 
+    text='Add a build component', variable=self.select_var, value=1)
 
 self.select_button = tkinter.Button(self.bottom_frame, text='Select', command=self.select_option)
 
@@ -52,8 +55,6 @@ def add_comp(self):
     self.response_var.set("You've added this item to inventory.")
 ```
 
-### How to Install
-
 ### Technologies Used
 
-### License
+The program use's Python's built-in **pickle module** to serialize the `inv_dct` contents and write it to the specified file and the built-in **tkinter module** for the user interfaces.
